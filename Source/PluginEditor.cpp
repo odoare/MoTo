@@ -13,7 +13,7 @@
 MonitoringSectionAudioProcessorEditor::MonitoringSectionAudioProcessorEditor (MonitoringSectionAudioProcessor& p)
     : AudioProcessorEditor (&p), audioProcessor (p)
 {
-  addController(levelSlider, juce::Slider::SliderStyle::RotaryVerticalDrag, juce::Colours::orange,juce::Colours::black);
+  addController(levelSlider, juce::Slider::SliderStyle::RotaryVerticalDrag, juce::Colours::cyan,juce::Colours::black);
   addAndConnectLabel(levelSlider, levelLabel);
   levelSliderAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts,"Level",levelSlider);
   //directLevelSlider.onDragEnd = updateFunc;
@@ -40,7 +40,7 @@ MonitoringSectionAudioProcessorEditor::MonitoringSectionAudioProcessorEditor (Mo
   muteLabel.attachToComponent(&muteButton,false);
   muteButton.setLookAndFeel(&buttonLookAndFeel);
   muteButton.setClickingTogglesState(true);
-  muteButton.setColour(0,juce::Colours::yellow);
+  muteButton.setColour(0,juce::Colours::red);
 
   addAndMakeVisible(dimButton);
   dimButtonAttachment = std::make_unique<juce::AudioProcessorValueTreeState::ButtonAttachment>(audioProcessor.apvts,"Dim",dimButton);
@@ -48,7 +48,7 @@ MonitoringSectionAudioProcessorEditor::MonitoringSectionAudioProcessorEditor (Mo
   dimLabel.attachToComponent(&dimButton,false);
   dimButton.setLookAndFeel(&buttonLookAndFeel);
   dimButton.setClickingTogglesState(true);
-  dimButton.setColour(0,juce::Colours::orange);
+  dimButton.setColour(0,juce::Colours::green);
 
   addAndMakeVisible(monoButton);
   monoButtonAttachment = std::make_unique<juce::AudioProcessorValueTreeState::ButtonAttachment>(audioProcessor.apvts,"Mono",monoButton);
