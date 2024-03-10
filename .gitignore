@@ -1,7 +1,4 @@
-**/BiRR2D/Builds
-**/BiRR2D/JuceLibraryCode
-**/BiRR3D/Builds
-**/BiRR3D/JuceLibraryCode
+**/Builds
+**/JuceLibraryCode
 **/.vscode
 **/tests
-

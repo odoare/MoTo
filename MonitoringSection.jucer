@@ -5,6 +5,10 @@
               jucerFormatVersion="1" pluginFormats="buildVST,buildVST3">
   <MAINGROUP id="QRgX1r" name="MonitoringSection">
     <GROUP id="{D55946A7-C5F1-EBDB-57D8-976F8D4B8B3F}" name="Source">
+      <GROUP id="{89404A13-21F7-D165-BFBC-14A08E8DA7B2}" name="Components">
+        <FILE id="mLQ3cU" name="FxmeLookAndFeel.h" compile="0" resource="0"
+              file="Source/Components/FxmeLookAndFeel.h"/>
+      </GROUP>
       <FILE id="Gw7Qyw" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>
       <FILE id="sXgPrb" name="PluginProcessor.h" compile="0" resource="0"

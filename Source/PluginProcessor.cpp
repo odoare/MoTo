@@ -17,15 +17,17 @@ MonitoringSectionAudioProcessor::MonitoringSectionAudioProcessor()
                       #if ! JucePlugin_IsSynth
                        .withInput  ("Input",  juce::AudioChannelSet::stereo(), true)
                       #endif
-                       .withOutput ("Output", juce::AudioChannelSet::stereo(), true)
+                       .withOutput ("Output", juce::AudioChannelSet::discreteChannels(2*NUM_STEREO_OUT), true)
                      #endif
                        )
 #endif
 {
+    choices.addArray(CHOICES);
 }
 
 MonitoringSectionAudioProcessor::~MonitoringSectionAudioProcessor()
 {
+    
 }
 
 //==============================================================================
@@ -135,26 +137,52 @@ void MonitoringSectionAudioProcessor::processBlock (juce::AudioBuffer<float>& bu
     auto totalNumInputChannels  = getTotalNumInputChannels();
     auto totalNumOutputChannels = getTotalNumOutputChannels();
 
-    // In case we have more outputs than inputs, this code clears any output
-    // channels that didn't contain input data, (because these aren't
-    // guaranteed to be empty - they may contain garbage).
-    // This is here to avoid people getting screaming feedback
-    // when they first compile a plugin, but obviously you don't need to keep
-    // this code if your algorithm always overwrites all the output channels.
+    // Get parameter values
+    auto outLevel = juce::Decibels::decibelsToGain(apvts.getRawParameterValue("Level")->load())
+                    * (apvts.getRawParameterValue("Mute")->load() ? 0 : 1)
+                    * (apvts.getRawParameterValue("Dim")->load() ? 0.5 : 1) ;
+    auto mono = apvts.getRawParameterValue("Mono")->load();
+
+    // We clear all the output channels from 2 to totalNumInputChannels-1
     for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
         buffer.clear (i, 0, buffer.getNumSamples());
 
-    // This is the place where you'd normally do the guts of your plugin's
-    // audio processing...
-    // Make sure to reset the state if your inner loop is processing
-    // the samples and the outer loop is handling the channels.
-    // Alternatively, you can process the samples with the channels
-    // interleaved by keeping the same state.
-    for (int channel = 0; channel < totalNumInputChannels; ++channel)
-    {
-        auto* channelData = buffer.getWritePointer (channel);
+    // We start from the last channel because the first channel pair
+    // contains the input data. We treat them at the end
 
-        // ..do something to the data...
+    for (int chanpair = NUM_STEREO_OUT-1; chanpair > -1; --chanpair)
+    {
+        float gain = outLevel * (apvts.getRawParameterValue(choices[chanpair])->load() ? 1.f : 0.f);
+        if (!mono)
+        {
+            if (chanpair > 0)
+            {
+                buffer.addFrom(2*chanpair,0,buffer,0,0,buffer.getNumSamples(),gain);
+                buffer.addFrom(2*chanpair+1,0,buffer,1,0,buffer.getNumSamples(),gain);
+            }
+            else
+            {
+                buffer.applyGain(0,0,buffer.getNumSamples(),gain);
+                buffer.applyGain(1,0,buffer.getNumSamples(),gain);
+            }
+        }
+        else
+        {
+            if (chanpair > 0)
+            {
+                buffer.addFrom(2*chanpair,0,buffer,0,0,buffer.getNumSamples(),.5*gain);
+                buffer.addFrom(2*chanpair+1,0,buffer,1,0,buffer.getNumSamples(),.5*gain);
+                buffer.addFrom(2*chanpair,0,buffer,1,0,buffer.getNumSamples(),.5*gain);
+                buffer.addFrom(2*chanpair+1,0,buffer,0,0,buffer.getNumSamples(),.5*gain);
+            }
+            else
+            {
+                buffer.applyGain(0,0,buffer.getNumSamples(),.5*gain);
+                buffer.addFrom(0,0,buffer,1,0,buffer.getNumSamples(),.5*gain);
+                buffer.clear(1,0,buffer.getNumSamples());
+                buffer.addFrom(1,0,buffer,0,0,buffer.getNumSamples(),1.f);
+            }
+        }
     }
 }
 
@@ -166,6 +194,7 @@ bool MonitoringSectionAudioProcessor::hasEditor() const
 
 juce::AudioProcessorEditor* MonitoringSectionAudioProcessor::createEditor()
 {
+    //return new juce::GenericAudioProcessorEditor(*this);
     return new MonitoringSectionAudioProcessorEditor (*this);
 }
 
@@ -188,4 +217,23 @@ void MonitoringSectionAudioProcessor::setStateInformation (const void* data, int
 juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
     return new MonitoringSectionAudioProcessor();
+}
+
+juce::AudioProcessorValueTreeState::ParameterLayout MonitoringSectionAudioProcessor::createParameters()
+{
+    juce::AudioProcessorValueTreeState::ParameterLayout layout;
+    layout.add(std::make_unique<juce::AudioParameterFloat>("Level","Level",juce::NormalisableRange<float>(-60.0f,6.f,0.1f,1.f),0.f));
+    
+    juce::StringArray choices;
+    choices.addArray(CHOICES);
+    for (int i=0; i<NUM_STEREO_OUT; ++i)
+    {
+        layout.add(std::make_unique<juce::AudioParameterBool>(choices[i], choices[i], i==0 ? true : false));
+    }
+    layout.add(std::make_unique<juce::AudioParameterBool>("Mute","Mute", true));
+    layout.add(std::make_unique<juce::AudioParameterBool>("Dim","Dim", true));
+    layout.add(std::make_unique<juce::AudioParameterBool>("Mono","Mono", true));
+    layout.add(std::make_unique<juce::AudioParameterBool>("Exclusive","Exclusive", true));
+
+    return layout;
 }

@@ -2488,6 +2488,7 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_gui_extra.cpp"/>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\Components\FxmeLookAndFeel.h"/>
     <ClInclude Include="..\..\Source\PluginProcessor.h"/>
     <ClInclude Include="..\..\Source\PluginEditor.h"/>
     <ClInclude Include="C:\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.h"/>
@@ -2743,6 +2744,9 @@
     <ClInclude Include="C:\JUCE\modules\juce_audio_plugin_client\detail\juce_LinuxMessageThread.h"/>
     <ClInclude Include="C:\JUCE\modules\juce_audio_plugin_client\detail\juce_PluginUtilities.h"/>
     <ClInclude Include="C:\JUCE\modules\juce_audio_plugin_client\detail\juce_VSTWindowUtilities.h"/>
+    <ClInclude Include="C:\JUCE\modules\juce_audio_plugin_client\pluginterfaces\vst2.x\aeffect.h"/>
+    <ClInclude Include="C:\JUCE\modules\juce_audio_plugin_client\pluginterfaces\vst2.x\aeffectx.h"/>
+    <ClInclude Include="C:\JUCE\modules\juce_audio_plugin_client\pluginterfaces\vst2.x\vstfxstore.h"/>
     <ClInclude Include="..\..\..\..\JUCE\JUCE\modules\juce_audio_plugin_client\juce_audio_plugin_client.h"/>
     <ClInclude Include="C:\JUCE\modules\juce_audio_processors\format\juce_AudioPluginFormat.h"/>
     <ClInclude Include="C:\JUCE\modules\juce_audio_processors\format\juce_AudioPluginFormatManager.h"/>

@@ -9,6 +9,10 @@
 #pragma once
 
 #include <JuceHeader.h>
+#include <iostream>
+
+#define CHOICES {"A", "B", "C", "D"}
+#define NUM_STEREO_OUT 4
 
 //==============================================================================
 /**
@@ -52,6 +56,11 @@ public:
     //==============================================================================
     void getStateInformation (juce::MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
+
+    static juce::AudioProcessorValueTreeState::ParameterLayout createParameters();  
+    juce::AudioProcessorValueTreeState apvts{*this,nullptr,"Parameters",createParameters()};
+
+    juce::StringArray choices;
 
 private:
     //==============================================================================
