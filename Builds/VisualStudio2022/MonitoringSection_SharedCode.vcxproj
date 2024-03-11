@@ -2489,6 +2489,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\Components\FxmeLookAndFeel.h"/>
+    <ClInclude Include="..\..\Source\Components\FxmeMeter.h"/>
     <ClInclude Include="..\..\Source\PluginProcessor.h"/>
     <ClInclude Include="..\..\Source\PluginEditor.h"/>
     <ClInclude Include="C:\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.h"/>

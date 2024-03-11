@@ -3219,6 +3219,9 @@
     <ClInclude Include="..\..\Source\Components\FxmeLookAndFeel.h">
       <Filter>MonitoringSection\Source\Components</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\Components\FxmeMeter.h">
+      <Filter>MonitoringSection\Source\Components</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\PluginProcessor.h">
       <Filter>MonitoringSection\Source</Filter>
     </ClInclude>

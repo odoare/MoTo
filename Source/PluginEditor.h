@@ -11,6 +11,7 @@
 #include <JuceHeader.h>
 #include "PluginProcessor.h"
 #include "Components/FxmeLookAndFeel.h"
+#include "Components/FxmeMeter.h"
 
 //==============================================================================
 /**
@@ -55,6 +56,12 @@ private:
 
     FxmeButtonLookAndFeel buttonLookAndFeel;
     FxmeKnobLookAndFeel knobLookAndFeel;
+
+    VerticalMeter   verticalMeterLmax{[&]() { return audioProcessor.getMaxLevel(0); }},
+                    verticalMeterRmax{[&]() { return audioProcessor.getMaxLevel(1); }},
+                    verticalMeterL{[&]() { return audioProcessor.getRmsLevel(0); }},
+                    verticalMeterR{[&]() { return audioProcessor.getRmsLevel(1); }};
+ ;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MonitoringSectionAudioProcessorEditor)
 };

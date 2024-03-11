@@ -8,6 +8,7 @@
       <GROUP id="{89404A13-21F7-D165-BFBC-14A08E8DA7B2}" name="Components">
         <FILE id="mLQ3cU" name="FxmeLookAndFeel.h" compile="0" resource="0"
               file="Source/Components/FxmeLookAndFeel.h"/>
+        <FILE id="hELWtE" name="FxmeMeter.h" compile="0" resource="0" file="Source/Components/FxmeMeter.h"/>
       </GROUP>
       <FILE id="Gw7Qyw" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>

@@ -9,10 +9,12 @@
 #pragma once
 
 #include <JuceHeader.h>
+
 #include <iostream>
 
 #define CHOICES {"A", "B", "C", "D"}
 #define NUM_STEREO_OUT 4
+#define NUM_METER_CHANNELS 2
 
 //==============================================================================
 /**
@@ -57,10 +59,16 @@ public:
     void getStateInformation (juce::MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
 
+    float getRmsLevel(const int channel);
+    float getMaxLevel(const int channel);
+
     static juce::AudioProcessorValueTreeState::ParameterLayout createParameters();  
     juce::AudioProcessorValueTreeState apvts{*this,nullptr,"Parameters",createParameters()};
 
     juce::StringArray choices;
+
+    juce::LinearSmoothedValue<float> rmsLevel[NUM_METER_CHANNELS]; 
+    float maxLevel[NUM_METER_CHANNELS];
 
 private:
     //==============================================================================

@@ -105,13 +105,14 @@ public:
     auto isDown = b.getToggleState();
     auto col = b.findColour(0);
     float t;
-    float w = bounds.getWidth()*.05f;
+    float w = bounds.getWidth()*.1f;
 
     if (isDown)
       g.setColour(col.brighter(0.3f));
     else
       g.setColour(col.darker(.8f));
-    g.fillRect(bounds);
+    g.fillRoundedRectangle(bounds.toFloat(),w*2);
+
     if (isDown)
     {
       g.setColour(juce::Colours::white);
@@ -122,6 +123,6 @@ public:
       g.setColour(juce::Colours::black);
       t = w;
     }
-    g.drawRect(bounds,t);
+    g.drawRoundedRectangle(bounds.toFloat(),w*2,t);
   }
 };

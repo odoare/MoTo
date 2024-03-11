@@ -16,7 +16,6 @@ MonitoringSectionAudioProcessorEditor::MonitoringSectionAudioProcessorEditor (Mo
   addController(levelSlider, juce::Slider::SliderStyle::RotaryVerticalDrag, juce::Colours::cyan,juce::Colours::black);
   addAndConnectLabel(levelSlider, levelLabel);
   levelSliderAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts,"Level",levelSlider);
-  //directLevelSlider.onDragEnd = updateFunc;
   levelSlider.setLookAndFeel(&knobLookAndFeel);
 
   for (int i=0; i<NUM_STEREO_OUT; ++i)
@@ -58,16 +57,26 @@ MonitoringSectionAudioProcessorEditor::MonitoringSectionAudioProcessorEditor (Mo
   monoButton.setClickingTogglesState(true);
   monoButton.setColour(0,juce::Colours::blue);
 
+  verticalMeterL.setColour(juce::Colours::white);
+  addAndMakeVisible(verticalMeterLmax);
+  verticalMeterR.setColour(juce::Colours::white);
+  addAndMakeVisible(verticalMeterRmax);
+
+  verticalMeterL.setColour(juce::Colours::green.brighter());
+  addAndMakeVisible(verticalMeterL);
+  verticalMeterR.setColour(juce::Colours::green.brighter());
+  addAndMakeVisible(verticalMeterR);
+
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
-    setSize (360, 144);
+    setSize (432, 144);
 }
 
 MonitoringSectionAudioProcessorEditor::~MonitoringSectionAudioProcessorEditor()
 {
 }
 
-#define NX 20
+#define NX 24
 #define NY 8
 #define DELTAX 0.2f
 #define DELTAY 0.2f
@@ -113,7 +122,6 @@ void MonitoringSectionAudioProcessorEditor::resized()
     channelButton[i].setBounds(juce::Rectangle<int>(ex+i*bdux,ey,bdux,juce::jmin(bdux,duy)).RED);
   }
 
-
   muteButton.setBounds(juce::Rectangle<int>(uxb+2*dux,uyb+duy,dux,duy).RED);
   //muteLabel.setTopLeftPosition(uxb+dux*2.25f,uyb+duy*0.95f);
 
@@ -122,6 +130,11 @@ void MonitoringSectionAudioProcessorEditor::resized()
 
   monoButton.setBounds(juce::Rectangle<int>(uxb+4*dux,uyb+duy,dux,duy).RED);
   //monoLabel.setTopLeftPosition(uxb+dux*4.25f,uyb+duy*0.95f);
+
+  verticalMeterLmax.setBounds(uxb+5*dux,uyb,0.5*dux,2*duy);
+  verticalMeterRmax.setBounds(uxb+5.5*dux,uyb,0.5*dux,2*duy);
+  verticalMeterL.setBounds(uxb+5*dux,uyb,0.5*dux,2*duy);
+  verticalMeterR.setBounds(uxb+5.5*dux,uyb,0.5*dux,2*duy);
 
 }
 

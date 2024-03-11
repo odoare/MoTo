@@ -95,8 +95,11 @@ void MonitoringSectionAudioProcessor::changeProgramName (int index, const juce::
 //==============================================================================
 void MonitoringSectionAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
-    // Use this method as the place to do any pre-playback
-    // initialisation that you need..
+    for (int i=0;i<2;i++)
+    {
+        rmsLevel[i].reset(sampleRate,0.2);
+        rmsLevel[i].setCurrentAndTargetValue(-30.0f);
+    }
 }
 
 void MonitoringSectionAudioProcessor::releaseResources()
@@ -147,41 +150,47 @@ void MonitoringSectionAudioProcessor::processBlock (juce::AudioBuffer<float>& bu
     for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
         buffer.clear (i, 0, buffer.getNumSamples());
 
+    // We apply gain on the first two channels
+
+    buffer.applyGain(0,0,buffer.getNumSamples(),outLevel);
+    buffer.applyGain(1,0,buffer.getNumSamples(),outLevel);
+
+    if (mono)
+    {
+        buffer.applyGain(0,0,buffer.getNumSamples(),.5f);
+        buffer.addFrom(0,0,buffer,1,0,buffer.getNumSamples(),.5f);
+        buffer.clear(1,0,buffer.getNumSamples());
+        buffer.addFrom(1,0,buffer,0,0,buffer.getNumSamples(),1.f);
+    }
+
+    // Vu-Meter
+    for (int i=0; i<2; ++i)
+    {
+        rmsLevel[i].skip(buffer.getNumSamples());
+        const auto value = juce::Decibels::gainToDecibels(buffer.getRMSLevel(i,0,buffer.getNumSamples()));
+        if (value < rmsLevel[i].getCurrentValue())
+            rmsLevel[i].setTargetValue(value);
+        else
+            rmsLevel[i].setCurrentAndTargetValue(value);
+        
+        maxLevel[i] = juce::Decibels::gainToDecibels(buffer.getMagnitude(i,0,buffer.getNumSamples()));
+    }
+
     // We start from the last channel because the first channel pair
     // contains the input data. We treat them at the end
 
     for (int chanpair = NUM_STEREO_OUT-1; chanpair > -1; --chanpair)
     {
-        float gain = outLevel * (apvts.getRawParameterValue(choices[chanpair])->load() ? 1.f : 0.f);
-        if (!mono)
+        float gain = apvts.getRawParameterValue(choices[chanpair])->load() ? 1.f : 0.f ;
+        if (chanpair > 0)
         {
-            if (chanpair > 0)
-            {
-                buffer.addFrom(2*chanpair,0,buffer,0,0,buffer.getNumSamples(),gain);
-                buffer.addFrom(2*chanpair+1,0,buffer,1,0,buffer.getNumSamples(),gain);
-            }
-            else
-            {
-                buffer.applyGain(0,0,buffer.getNumSamples(),gain);
-                buffer.applyGain(1,0,buffer.getNumSamples(),gain);
-            }
+            buffer.addFrom(2*chanpair,0,buffer,0,0,buffer.getNumSamples(),gain);
+            buffer.addFrom(2*chanpair+1,0,buffer,1,0,buffer.getNumSamples(),gain);
         }
         else
         {
-            if (chanpair > 0)
-            {
-                buffer.addFrom(2*chanpair,0,buffer,0,0,buffer.getNumSamples(),.5*gain);
-                buffer.addFrom(2*chanpair+1,0,buffer,1,0,buffer.getNumSamples(),.5*gain);
-                buffer.addFrom(2*chanpair,0,buffer,1,0,buffer.getNumSamples(),.5*gain);
-                buffer.addFrom(2*chanpair+1,0,buffer,0,0,buffer.getNumSamples(),.5*gain);
-            }
-            else
-            {
-                buffer.applyGain(0,0,buffer.getNumSamples(),.5*gain);
-                buffer.addFrom(0,0,buffer,1,0,buffer.getNumSamples(),.5*gain);
-                buffer.clear(1,0,buffer.getNumSamples());
-                buffer.addFrom(1,0,buffer,0,0,buffer.getNumSamples(),1.f);
-            }
+            buffer.applyGain(0,0,buffer.getNumSamples(),gain);
+            buffer.applyGain(1,0,buffer.getNumSamples(),gain);
         }
     }
 }
@@ -211,6 +220,18 @@ void MonitoringSectionAudioProcessor::setStateInformation (const void* data, int
     // You should use this method to restore your parameters from this memory block,
     // whose contents will have been created by the getStateInformation() call.
 }
+
+
+float MonitoringSectionAudioProcessor::getRmsLevel(const int channel)
+{
+  return rmsLevel[channel].getCurrentValue();
+}
+
+float MonitoringSectionAudioProcessor::getMaxLevel(const int channel)
+{
+  return maxLevel[channel];
+}
+
 
 //==============================================================================
 // This creates new instances of the plugin..

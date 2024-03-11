@@ -98,6 +98,7 @@
 		8BBEB6D6424683166E84FF06 /* include_juce_audio_processors_lv2_libs.cpp */ /* include_juce_audio_processors_lv2_libs.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = include_juce_audio_processors_lv2_libs.cpp; path = ../../JuceLibraryCode/include_juce_audio_processors_lv2_libs.cpp; sourceTree = SOURCE_ROOT; };
 		9000E8CA486622ACBB746557 /* Shared Code */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMonitoringSection.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		97B1FC088DAD0E613C970410 /* FxmeLookAndFeel.h */ /* FxmeLookAndFeel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FxmeLookAndFeel.h; path = ../../Source/Components/FxmeLookAndFeel.h; sourceTree = SOURCE_ROOT; };
+		9D4293987451E4B2948D8B3E /* FxmeMeter.h */ /* FxmeMeter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FxmeMeter.h; path = ../../Source/Components/FxmeMeter.h; sourceTree = SOURCE_ROOT; };
 		A615B13168D3C5E51D6B0175 /* PluginEditor.h */ /* PluginEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PluginEditor.h; path = ../../Source/PluginEditor.h; sourceTree = SOURCE_ROOT; };
 		AB57834985DF10B1EE506970 /* juce_events */ /* juce_events */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_events; path = "~/JUCE/modules/juce_events"; sourceTree = "<absolute>"; };
 		AD0CA770A7C1A350EA13EE9F /* include_juce_data_structures.mm */ /* include_juce_data_structures.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_data_structures.mm; path = ../../JuceLibraryCode/include_juce_data_structures.mm; sourceTree = SOURCE_ROOT; };
@@ -275,6 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				97B1FC088DAD0E613C970410,
+				9D4293987451E4B2948D8B3E,
 			);
 			name = Components;
 			sourceTree = "<group>";
