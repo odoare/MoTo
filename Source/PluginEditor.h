@@ -53,15 +53,28 @@ private:
     juce::ToggleButton channelButton[NUM_STEREO_OUT];
     std::unique_ptr<juce::AudioProcessorValueTreeState::ButtonAttachment> channelButtonAttachment[NUM_STEREO_OUT];
     juce::Label channelLabel[NUM_STEREO_OUT];
+    int channelIndex[NUM_STEREO_OUT];
 
+    juce::ToggleButton exclusiveButton;
+    std::unique_ptr<juce::AudioProcessorValueTreeState::ButtonAttachment> exclusiveButtonAttachment;
+    juce::Label exclusiveLabel{"exclusiveLabel","Excl"};
+    
     FxmeButtonLookAndFeel buttonLookAndFeel;
     FxmeKnobLookAndFeel knobLookAndFeel;
 
-    VerticalMeter   verticalMeterLmax{[&]() { return audioProcessor.getMaxLevel(0); }},
-                    verticalMeterRmax{[&]() { return audioProcessor.getMaxLevel(1); }},
-                    verticalMeterL{[&]() { return audioProcessor.getRmsLevel(0); }},
-                    verticalMeterR{[&]() { return audioProcessor.getRmsLevel(1); }};
- ;
+    // VerticalMeter   verticalMeterLmax{[&]() { return audioProcessor.getMaxLevel(0); }},
+    //                 verticalMeterRmax{[&]() { return audioProcessor.getMaxLevel(1); }},
+    //                 verticalMeterL{[&]() { return audioProcessor.getRmsLevel(0); }},
+    //                 verticalMeterR{[&]() { return audioProcessor.getRmsLevel(1); }};
+
+    HorizontalMultiMeter meterL{[&]() { return audioProcessor.getMaxLevel(0); },
+                                [&]() { return audioProcessor.getSmoothedMaxLevel(0); }},
+                         meterR{[&]() { return audioProcessor.getMaxLevel(1); },
+                                [&]() { return audioProcessor.getSmoothedMaxLevel(1); }};
+
+    int lastChangedChannelIndex;
+
+    juce::Image logo;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MonitoringSectionAudioProcessorEditor)
 };

@@ -15,6 +15,7 @@ BEGIN
   BEGIN
     BLOCK "040904E4"
     BEGIN
+      VALUE "CompanyName",  "FX Mechanics\0"
       VALUE "FileDescription",  "MonitoringSection\0"
       VALUE "FileVersion",  "1.0.0\0"
       VALUE "ProductName",  "MonitoringSection\0"

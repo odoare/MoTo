@@ -2,8 +2,13 @@
 
 <JUCERPROJECT id="W3ZfTb" name="MonitoringSection" projectType="audioplug"
               useAppConfig="0" addUsingNamespaceToJuceHeader="0" displaySplashScreen="1"
-              jucerFormatVersion="1" pluginFormats="buildVST,buildVST3">
+              jucerFormatVersion="1" pluginFormats="buildVST,buildVST3" companyName="FX Mechanics"
+              companyWebsite="www.fx-mechanics.com" pluginManufacturerCode="FXME"
+              pluginCode="MOSE" pluginVST3Category="Fx,Tools">
   <MAINGROUP id="QRgX1r" name="MonitoringSection">
+    <GROUP id="{FE0033EE-A410-5806-E696-878A29A75DD5}" name="Assets">
+      <FILE id="Gtx5Xa" name="logo686.png" compile="0" resource="1" file="Source/Assets/logo686.png"/>
+    </GROUP>
     <GROUP id="{D55946A7-C5F1-EBDB-57D8-976F8D4B8B3F}" name="Source">
       <GROUP id="{89404A13-21F7-D165-BFBC-14A08E8DA7B2}" name="Components">
         <FILE id="mLQ3cU" name="FxmeLookAndFeel.h" compile="0" resource="0"

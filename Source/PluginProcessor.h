@@ -59,7 +59,7 @@ public:
     void getStateInformation (juce::MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
 
-    float getRmsLevel(const int channel);
+    float getSmoothedMaxLevel(const int channel);
     float getMaxLevel(const int channel);
 
     static juce::AudioProcessorValueTreeState::ParameterLayout createParameters();  
@@ -67,10 +67,10 @@ public:
 
     juce::StringArray choices;
 
-    juce::LinearSmoothedValue<float> rmsLevel[NUM_METER_CHANNELS]; 
-    float maxLevel[NUM_METER_CHANNELS];
-
 private:
+    juce::LinearSmoothedValue<float> smoothedMaxLevel[NUM_METER_CHANNELS]; 
+    float maxLevel[NUM_METER_CHANNELS];
+    float maxDecay{2.f};
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MonitoringSectionAudioProcessor)
 };

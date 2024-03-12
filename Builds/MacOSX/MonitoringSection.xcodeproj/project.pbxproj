@@ -62,6 +62,7 @@
 		E0069CCA479A2B989D53C766 /* include_juce_data_structures.mm */ = {isa = PBXBuildFile; fileRef = AD0CA770A7C1A350EA13EE9F; };
 		E0B840949392D94286187959 /* include_juce_dsp.mm */ = {isa = PBXBuildFile; fileRef = BD709A082235E89F57E94418; };
 		EB903A26171971C18A1A34AD /* include_juce_core.mm */ = {isa = PBXBuildFile; fileRef = FCCB8530F932B98D83F30B8C; };
+		F49641EE321FF1C2823DEA82 /* BinaryData.cpp */ = {isa = PBXBuildFile; fileRef = AD11377C90C307E80B97D56D; };
 		F72E244E6B487C7631558823 /* include_juce_gui_basics.mm */ = {isa = PBXBuildFile; fileRef = C696E3C2EFA0FED4377271BC; };
 /* End PBXBuildFile section */
 
@@ -95,6 +96,7 @@
 		6F0B2AD8724C1194B668E405 /* include_juce_audio_plugin_client_VST2.mm */ /* include_juce_audio_plugin_client_VST2.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_audio_plugin_client_VST2.mm; path = ../../JuceLibraryCode/include_juce_audio_plugin_client_VST2.mm; sourceTree = SOURCE_ROOT; };
 		7939E582923121BA7D684974 /* CoreMIDI.framework */ /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
 		7D359683F2C5C493B6C35A38 /* AudioToolbox.framework */ /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		7F5971785BDA9D06B69727ED /* logo686.png */ /* logo686.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo686.png; path = ../../Source/Assets/logo686.png; sourceTree = SOURCE_ROOT; };
 		8BBEB6D6424683166E84FF06 /* include_juce_audio_processors_lv2_libs.cpp */ /* include_juce_audio_processors_lv2_libs.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = include_juce_audio_processors_lv2_libs.cpp; path = ../../JuceLibraryCode/include_juce_audio_processors_lv2_libs.cpp; sourceTree = SOURCE_ROOT; };
 		9000E8CA486622ACBB746557 /* Shared Code */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMonitoringSection.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		97B1FC088DAD0E613C970410 /* FxmeLookAndFeel.h */ /* FxmeLookAndFeel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FxmeLookAndFeel.h; path = ../../Source/Components/FxmeLookAndFeel.h; sourceTree = SOURCE_ROOT; };
@@ -102,6 +104,7 @@
 		A615B13168D3C5E51D6B0175 /* PluginEditor.h */ /* PluginEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PluginEditor.h; path = ../../Source/PluginEditor.h; sourceTree = SOURCE_ROOT; };
 		AB57834985DF10B1EE506970 /* juce_events */ /* juce_events */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_events; path = "~/JUCE/modules/juce_events"; sourceTree = "<absolute>"; };
 		AD0CA770A7C1A350EA13EE9F /* include_juce_data_structures.mm */ /* include_juce_data_structures.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_data_structures.mm; path = ../../JuceLibraryCode/include_juce_data_structures.mm; sourceTree = SOURCE_ROOT; };
+		AD11377C90C307E80B97D56D /* BinaryData.cpp */ /* BinaryData.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = BinaryData.cpp; path = ../../JuceLibraryCode/BinaryData.cpp; sourceTree = SOURCE_ROOT; };
 		AE31E6E7FA6843879719C1F7 /* PluginProcessor.cpp */ /* PluginProcessor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PluginProcessor.cpp; path = ../../Source/PluginProcessor.cpp; sourceTree = SOURCE_ROOT; };
 		B248176EF52D8ECA34AEA030 /* juce_audio_processors */ /* juce_audio_processors */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_audio_processors; path = "~/JUCE/modules/juce_audio_processors"; sourceTree = "<absolute>"; };
 		B4A8505436FF8EDDC364126A /* VST3 */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MonitoringSection.vst3; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,6 +124,7 @@
 		DEBCB868834AFF61DD6E3E0B /* include_juce_audio_plugin_client_VST3.mm */ /* include_juce_audio_plugin_client_VST3.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_audio_plugin_client_VST3.mm; path = ../../JuceLibraryCode/include_juce_audio_plugin_client_VST3.mm; sourceTree = SOURCE_ROOT; };
 		DFF5C0891247F19B32E0C602 /* juce_gui_basics */ /* juce_gui_basics */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_gui_basics; path = "~/JUCE/modules/juce_gui_basics"; sourceTree = "<absolute>"; };
 		EB570E7555AE9EC0913BAED6 /* CoreAudioKit.framework */ /* CoreAudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudioKit.framework; path = System/Library/Frameworks/CoreAudioKit.framework; sourceTree = SDKROOT; };
+		EFCF7B78766E6EB5D7679867 /* BinaryData.h */ /* BinaryData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BinaryData.h; path = ../../JuceLibraryCode/BinaryData.h; sourceTree = SOURCE_ROOT; };
 		F15DDFFB62BF678E7E494EFC /* juce_audio_basics */ /* juce_audio_basics */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_audio_basics; path = "~/JUCE/modules/juce_audio_basics"; sourceTree = "<absolute>"; };
 		F199175445A3F08647845169 /* include_juce_graphics.mm */ /* include_juce_graphics.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_graphics.mm; path = ../../JuceLibraryCode/include_juce_graphics.mm; sourceTree = SOURCE_ROOT; };
 		F956B8225F979F609D8111E3 /* juce_data_structures */ /* juce_data_structures */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_data_structures; path = "~/JUCE/modules/juce_data_structures"; sourceTree = "<absolute>"; };
@@ -196,6 +200,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		079D970E6D4097068030065A /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				7F5971785BDA9D06B69727ED,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
 		1AC510FA5B5C2E3ADAF5EF62 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +222,7 @@
 		8B585967CBD5166E888BC9AF /* MonitoringSection */ = {
 			isa = PBXGroup;
 			children = (
+				079D970E6D4097068030065A,
 				8BD1F92DAE877743A5E39E55,
 			);
 			name = MonitoringSection;
@@ -304,6 +317,8 @@
 		FD3EDDF3EC8999CF8DE7ED89 /* JUCE Library Code */ = {
 			isa = PBXGroup;
 			children = (
+				AD11377C90C307E80B97D56D,
+				EFCF7B78766E6EB5D7679867,
 				5D9BF6CFA685EE2E882542BC,
 				0C6A7C61BF22D6C912B630B6,
 				C180CD9A09765F5C632889B2,
@@ -409,7 +424,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1340;
-				ORGANIZATIONNAME = "";
+				ORGANIZATIONNAME = "FX Mechanics";
 				TargetAttributes = {
 					07DFD03DDA27B76BEFC04400 = {
 						SystemCapabilities = {
@@ -613,6 +628,7 @@
 			files = (
 				968F3E04BADAB553DBE3D35C,
 				9A0110CD66993DB7580E3FBD,
+				F49641EE321FF1C2823DEA82,
 				977BCF998D54661D8F54C6EF,
 				AA7EF33E8EA54FBB210B81E4,
 				4492091D68A39588E1F73937,
@@ -727,11 +743,11 @@
 					"JucePlugin_Enable_ARA=0",
 					"JucePlugin_Name=\\\"MonitoringSection\\\"",
 					"JucePlugin_Desc=\\\"MonitoringSection\\\"",
-					"JucePlugin_Manufacturer=\\\"yourcompany\\\"",
-					"JucePlugin_ManufacturerWebsite=\\\"www.yourcompany.com\\\"",
+					"JucePlugin_Manufacturer=\\\"FX\\ Mechanics\\\"",
+					"JucePlugin_ManufacturerWebsite=\\\"www.fx-mechanics.com\\\"",
 					"JucePlugin_ManufacturerEmail=\\\"\\\"",
-					"JucePlugin_ManufacturerCode=0x4d616e75",
-					"JucePlugin_PluginCode=0x57337a66",
+					"JucePlugin_ManufacturerCode=0x46584d45",
+					"JucePlugin_PluginCode=0x4d4f5345",
 					"JucePlugin_IsSynth=0",
 					"JucePlugin_WantsMidiInput=0",
 					"JucePlugin_ProducesMidiOutput=0",
@@ -742,14 +758,14 @@
 					"JucePlugin_VersionString=\\\"1.0.0\\\"",
 					"JucePlugin_VSTUniqueID=JucePlugin_PluginCode",
 					"JucePlugin_VSTCategory=kPlugCategEffect",
-					"JucePlugin_Vst3Category=\\\"Fx\\\"",
+					"JucePlugin_Vst3Category=\\\"Fx|Tools\\\"",
 					"JucePlugin_AUMainType=\\'aufx\\'",
 					"JucePlugin_AUSubType=JucePlugin_PluginCode",
 					"JucePlugin_AUExportPrefix=MonitoringSectionAU",
 					"JucePlugin_AUExportPrefixQuoted=\\\"MonitoringSectionAU\\\"",
 					"JucePlugin_AUManufacturerCode=JucePlugin_ManufacturerCode",
-					"JucePlugin_CFBundleIdentifier=com.yourcompany.MonitoringSection",
-					"JucePlugin_AAXIdentifier=com.yourcompany.MonitoringSection",
+					"JucePlugin_CFBundleIdentifier=com.FXMechanics.MonitoringSection",
+					"JucePlugin_AAXIdentifier=com.FXMechanics.MonitoringSection",
 					"JucePlugin_AAXManufacturerCode=JucePlugin_ManufacturerCode",
 					"JucePlugin_AAXProductId=JucePlugin_PluginCode",
 					"JucePlugin_AAXCategory=0",
@@ -757,13 +773,13 @@
 					"JucePlugin_AAXDisableMultiMono=0",
 					"JucePlugin_IAAType=0x61757278",
 					"JucePlugin_IAASubType=JucePlugin_PluginCode",
-					"JucePlugin_IAAName=\\\"yourcompany:\\ MonitoringSection\\\"",
+					"JucePlugin_IAAName=\\\"FX\\ Mechanics:\\ MonitoringSection\\\"",
 					"JucePlugin_VSTNumMidiInputs=16",
 					"JucePlugin_VSTNumMidiOutputs=16",
 					"JucePlugin_ARAContentTypes=0",
 					"JucePlugin_ARATransformationFlags=0",
-					"JucePlugin_ARAFactoryID=\\\"com.yourcompany.MonitoringSection.factory\\\"",
-					"JucePlugin_ARADocumentArchiveID=\\\"com.yourcompany.MonitoringSection.aradocumentarchive.1.0.0\\\"",
+					"JucePlugin_ARAFactoryID=\\\"com.FXMechanics.MonitoringSection.factory\\\"",
+					"JucePlugin_ARADocumentArchiveID=\\\"com.FXMechanics.MonitoringSection.aradocumentarchive.1.0.0\\\"",
 					"JucePlugin_ARACompatibleArchiveIDs=\\\"\\\"",
 					"JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
@@ -787,7 +803,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_HEADER_SEARCH_PATHS = "$(HOME)/JUCE/modules/juce_audio_processors/format_types/VST3_SDK $(SRCROOT)/../../JuceLibraryCode $(HOME)/JUCE/modules $(HOME)/JUCE/modules/juce_audio_plugin_client/AU";
 				OTHER_LDFLAGS = "-bundle -lMonitoringSection";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.MonitoringSection;
+				PRODUCT_BUNDLE_IDENTIFIER = com.FXMechanics.MonitoringSection;
 				PRODUCT_NAME = "MonitoringSection";
 				USE_HEADERMAP = NO;
 				VALID_ARCHS = "i386 x86_64 arm64 arm64e";
@@ -841,11 +857,11 @@
 					"JucePlugin_Enable_ARA=0",
 					"JucePlugin_Name=\\\"MonitoringSection\\\"",
 					"JucePlugin_Desc=\\\"MonitoringSection\\\"",
-					"JucePlugin_Manufacturer=\\\"yourcompany\\\"",
-					"JucePlugin_ManufacturerWebsite=\\\"www.yourcompany.com\\\"",
+					"JucePlugin_Manufacturer=\\\"FX\\ Mechanics\\\"",
+					"JucePlugin_ManufacturerWebsite=\\\"www.fx-mechanics.com\\\"",
 					"JucePlugin_ManufacturerEmail=\\\"\\\"",
-					"JucePlugin_ManufacturerCode=0x4d616e75",
-					"JucePlugin_PluginCode=0x57337a66",
+					"JucePlugin_ManufacturerCode=0x46584d45",
+					"JucePlugin_PluginCode=0x4d4f5345",
 					"JucePlugin_IsSynth=0",
 					"JucePlugin_WantsMidiInput=0",
 					"JucePlugin_ProducesMidiOutput=0",
@@ -856,14 +872,14 @@
 					"JucePlugin_VersionString=\\\"1.0.0\\\"",
 					"JucePlugin_VSTUniqueID=JucePlugin_PluginCode",
 					"JucePlugin_VSTCategory=kPlugCategEffect",
-					"JucePlugin_Vst3Category=\\\"Fx\\\"",
+					"JucePlugin_Vst3Category=\\\"Fx|Tools\\\"",
 					"JucePlugin_AUMainType=\\'aufx\\'",
 					"JucePlugin_AUSubType=JucePlugin_PluginCode",
 					"JucePlugin_AUExportPrefix=MonitoringSectionAU",
 					"JucePlugin_AUExportPrefixQuoted=\\\"MonitoringSectionAU\\\"",
 					"JucePlugin_AUManufacturerCode=JucePlugin_ManufacturerCode",
-					"JucePlugin_CFBundleIdentifier=com.yourcompany.MonitoringSection",
-					"JucePlugin_AAXIdentifier=com.yourcompany.MonitoringSection",
+					"JucePlugin_CFBundleIdentifier=com.FXMechanics.MonitoringSection",
+					"JucePlugin_AAXIdentifier=com.FXMechanics.MonitoringSection",
 					"JucePlugin_AAXManufacturerCode=JucePlugin_ManufacturerCode",
 					"JucePlugin_AAXProductId=JucePlugin_PluginCode",
 					"JucePlugin_AAXCategory=0",
@@ -871,13 +887,13 @@
 					"JucePlugin_AAXDisableMultiMono=0",
 					"JucePlugin_IAAType=0x61757278",
 					"JucePlugin_IAASubType=JucePlugin_PluginCode",
-					"JucePlugin_IAAName=\\\"yourcompany:\\ MonitoringSection\\\"",
+					"JucePlugin_IAAName=\\\"FX\\ Mechanics:\\ MonitoringSection\\\"",
 					"JucePlugin_VSTNumMidiInputs=16",
 					"JucePlugin_VSTNumMidiOutputs=16",
 					"JucePlugin_ARAContentTypes=0",
 					"JucePlugin_ARATransformationFlags=0",
-					"JucePlugin_ARAFactoryID=\\\"com.yourcompany.MonitoringSection.factory\\\"",
-					"JucePlugin_ARADocumentArchiveID=\\\"com.yourcompany.MonitoringSection.aradocumentarchive.1.0.0\\\"",
+					"JucePlugin_ARAFactoryID=\\\"com.FXMechanics.MonitoringSection.factory\\\"",
+					"JucePlugin_ARADocumentArchiveID=\\\"com.FXMechanics.MonitoringSection.aradocumentarchive.1.0.0\\\"",
 					"JucePlugin_ARACompatibleArchiveIDs=\\\"\\\"",
 					"JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
@@ -897,7 +913,7 @@
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_HEADER_SEARCH_PATHS = "$(HOME)/JUCE/modules/juce_audio_processors/format_types/VST3_SDK $(SRCROOT)/../../JuceLibraryCode $(HOME)/JUCE/modules $(HOME)/JUCE/modules/juce_audio_plugin_client/AU";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.MonitoringSection;
+				PRODUCT_BUNDLE_IDENTIFIER = com.FXMechanics.MonitoringSection;
 				PRODUCT_NAME = "MonitoringSection";
 				SKIP_INSTALL = YES;
 				USE_HEADERMAP = NO;
@@ -1007,11 +1023,11 @@
 					"JucePlugin_Enable_ARA=0",
 					"JucePlugin_Name=\\\"MonitoringSection\\\"",
 					"JucePlugin_Desc=\\\"MonitoringSection\\\"",
-					"JucePlugin_Manufacturer=\\\"yourcompany\\\"",
-					"JucePlugin_ManufacturerWebsite=\\\"www.yourcompany.com\\\"",
+					"JucePlugin_Manufacturer=\\\"FX\\ Mechanics\\\"",
+					"JucePlugin_ManufacturerWebsite=\\\"www.fx-mechanics.com\\\"",
 					"JucePlugin_ManufacturerEmail=\\\"\\\"",
-					"JucePlugin_ManufacturerCode=0x4d616e75",
-					"JucePlugin_PluginCode=0x57337a66",
+					"JucePlugin_ManufacturerCode=0x46584d45",
+					"JucePlugin_PluginCode=0x4d4f5345",
 					"JucePlugin_IsSynth=0",
 					"JucePlugin_WantsMidiInput=0",
 					"JucePlugin_ProducesMidiOutput=0",
@@ -1022,14 +1038,14 @@
 					"JucePlugin_VersionString=\\\"1.0.0\\\"",
 					"JucePlugin_VSTUniqueID=JucePlugin_PluginCode",
 					"JucePlugin_VSTCategory=kPlugCategEffect",
-					"JucePlugin_Vst3Category=\\\"Fx\\\"",
+					"JucePlugin_Vst3Category=\\\"Fx|Tools\\\"",
 					"JucePlugin_AUMainType=\\'aufx\\'",
 					"JucePlugin_AUSubType=JucePlugin_PluginCode",
 					"JucePlugin_AUExportPrefix=MonitoringSectionAU",
 					"JucePlugin_AUExportPrefixQuoted=\\\"MonitoringSectionAU\\\"",
 					"JucePlugin_AUManufacturerCode=JucePlugin_ManufacturerCode",
-					"JucePlugin_CFBundleIdentifier=com.yourcompany.MonitoringSection",
-					"JucePlugin_AAXIdentifier=com.yourcompany.MonitoringSection",
+					"JucePlugin_CFBundleIdentifier=com.FXMechanics.MonitoringSection",
+					"JucePlugin_AAXIdentifier=com.FXMechanics.MonitoringSection",
 					"JucePlugin_AAXManufacturerCode=JucePlugin_ManufacturerCode",
 					"JucePlugin_AAXProductId=JucePlugin_PluginCode",
 					"JucePlugin_AAXCategory=0",
@@ -1037,13 +1053,13 @@
 					"JucePlugin_AAXDisableMultiMono=0",
 					"JucePlugin_IAAType=0x61757278",
 					"JucePlugin_IAASubType=JucePlugin_PluginCode",
-					"JucePlugin_IAAName=\\\"yourcompany:\\ MonitoringSection\\\"",
+					"JucePlugin_IAAName=\\\"FX\\ Mechanics:\\ MonitoringSection\\\"",
 					"JucePlugin_VSTNumMidiInputs=16",
 					"JucePlugin_VSTNumMidiOutputs=16",
 					"JucePlugin_ARAContentTypes=0",
 					"JucePlugin_ARATransformationFlags=0",
-					"JucePlugin_ARAFactoryID=\\\"com.yourcompany.MonitoringSection.factory\\\"",
-					"JucePlugin_ARADocumentArchiveID=\\\"com.yourcompany.MonitoringSection.aradocumentarchive.1.0.0\\\"",
+					"JucePlugin_ARAFactoryID=\\\"com.FXMechanics.MonitoringSection.factory\\\"",
+					"JucePlugin_ARADocumentArchiveID=\\\"com.FXMechanics.MonitoringSection.aradocumentarchive.1.0.0\\\"",
 					"JucePlugin_ARACompatibleArchiveIDs=\\\"\\\"",
 					"JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
@@ -1067,7 +1083,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_HEADER_SEARCH_PATHS = "$(HOME)/JUCE/modules/juce_audio_processors/format_types/VST3_SDK $(SRCROOT)/../../JuceLibraryCode $(HOME)/JUCE/modules $(HOME)/JUCE/modules/juce_audio_plugin_client/AU";
 				OTHER_LDFLAGS = "-bundle -lMonitoringSection";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.MonitoringSection;
+				PRODUCT_BUNDLE_IDENTIFIER = com.FXMechanics.MonitoringSection;
 				PRODUCT_NAME = "MonitoringSection";
 				USE_HEADERMAP = NO;
 				VALID_ARCHS = "i386 x86_64 arm64 arm64e";
@@ -1121,11 +1137,11 @@
 					"JucePlugin_Enable_ARA=0",
 					"JucePlugin_Name=\\\"MonitoringSection\\\"",
 					"JucePlugin_Desc=\\\"MonitoringSection\\\"",
-					"JucePlugin_Manufacturer=\\\"yourcompany\\\"",
-					"JucePlugin_ManufacturerWebsite=\\\"www.yourcompany.com\\\"",
+					"JucePlugin_Manufacturer=\\\"FX\\ Mechanics\\\"",
+					"JucePlugin_ManufacturerWebsite=\\\"www.fx-mechanics.com\\\"",
 					"JucePlugin_ManufacturerEmail=\\\"\\\"",
-					"JucePlugin_ManufacturerCode=0x4d616e75",
-					"JucePlugin_PluginCode=0x57337a66",
+					"JucePlugin_ManufacturerCode=0x46584d45",
+					"JucePlugin_PluginCode=0x4d4f5345",
 					"JucePlugin_IsSynth=0",
 					"JucePlugin_WantsMidiInput=0",
 					"JucePlugin_ProducesMidiOutput=0",
@@ -1136,14 +1152,14 @@
 					"JucePlugin_VersionString=\\\"1.0.0\\\"",
 					"JucePlugin_VSTUniqueID=JucePlugin_PluginCode",
 					"JucePlugin_VSTCategory=kPlugCategEffect",
-					"JucePlugin_Vst3Category=\\\"Fx\\\"",
+					"JucePlugin_Vst3Category=\\\"Fx|Tools\\\"",
 					"JucePlugin_AUMainType=\\'aufx\\'",
 					"JucePlugin_AUSubType=JucePlugin_PluginCode",
 					"JucePlugin_AUExportPrefix=MonitoringSectionAU",
 					"JucePlugin_AUExportPrefixQuoted=\\\"MonitoringSectionAU\\\"",
 					"JucePlugin_AUManufacturerCode=JucePlugin_ManufacturerCode",
-					"JucePlugin_CFBundleIdentifier=com.yourcompany.MonitoringSection",
-					"JucePlugin_AAXIdentifier=com.yourcompany.MonitoringSection",
+					"JucePlugin_CFBundleIdentifier=com.FXMechanics.MonitoringSection",
+					"JucePlugin_AAXIdentifier=com.FXMechanics.MonitoringSection",
 					"JucePlugin_AAXManufacturerCode=JucePlugin_ManufacturerCode",
 					"JucePlugin_AAXProductId=JucePlugin_PluginCode",
 					"JucePlugin_AAXCategory=0",
@@ -1151,13 +1167,13 @@
 					"JucePlugin_AAXDisableMultiMono=0",
 					"JucePlugin_IAAType=0x61757278",
 					"JucePlugin_IAASubType=JucePlugin_PluginCode",
-					"JucePlugin_IAAName=\\\"yourcompany:\\ MonitoringSection\\\"",
+					"JucePlugin_IAAName=\\\"FX\\ Mechanics:\\ MonitoringSection\\\"",
 					"JucePlugin_VSTNumMidiInputs=16",
 					"JucePlugin_VSTNumMidiOutputs=16",
 					"JucePlugin_ARAContentTypes=0",
 					"JucePlugin_ARATransformationFlags=0",
-					"JucePlugin_ARAFactoryID=\\\"com.yourcompany.MonitoringSection.factory\\\"",
-					"JucePlugin_ARADocumentArchiveID=\\\"com.yourcompany.MonitoringSection.aradocumentarchive.1.0.0\\\"",
+					"JucePlugin_ARAFactoryID=\\\"com.FXMechanics.MonitoringSection.factory\\\"",
+					"JucePlugin_ARADocumentArchiveID=\\\"com.FXMechanics.MonitoringSection.aradocumentarchive.1.0.0\\\"",
 					"JucePlugin_ARACompatibleArchiveIDs=\\\"\\\"",
 					"JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
@@ -1177,7 +1193,7 @@
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_HEADER_SEARCH_PATHS = "$(HOME)/JUCE/modules/juce_audio_processors/format_types/VST3_SDK $(SRCROOT)/../../JuceLibraryCode $(HOME)/JUCE/modules $(HOME)/JUCE/modules/juce_audio_plugin_client/AU";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.MonitoringSection;
+				PRODUCT_BUNDLE_IDENTIFIER = com.FXMechanics.MonitoringSection;
 				PRODUCT_NAME = "juce_vst3_helper";
 				USE_HEADERMAP = NO;
 				VALID_ARCHS = "i386 x86_64 arm64 arm64e";

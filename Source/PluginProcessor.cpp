@@ -97,8 +97,8 @@ void MonitoringSectionAudioProcessor::prepareToPlay (double sampleRate, int samp
 {
     for (int i=0;i<2;i++)
     {
-        rmsLevel[i].reset(sampleRate,0.2);
-        rmsLevel[i].setCurrentAndTargetValue(-30.0f);
+        smoothedMaxLevel[i].reset(sampleRate,maxDecay);
+        smoothedMaxLevel[i].setCurrentAndTargetValue(-30.0f);
     }
 }
 
@@ -166,14 +166,14 @@ void MonitoringSectionAudioProcessor::processBlock (juce::AudioBuffer<float>& bu
     // Vu-Meter
     for (int i=0; i<2; ++i)
     {
-        rmsLevel[i].skip(buffer.getNumSamples());
-        const auto value = juce::Decibels::gainToDecibels(buffer.getRMSLevel(i,0,buffer.getNumSamples()));
-        if (value < rmsLevel[i].getCurrentValue())
-            rmsLevel[i].setTargetValue(value);
-        else
-            rmsLevel[i].setCurrentAndTargetValue(value);
-        
+        smoothedMaxLevel[i].skip(buffer.getNumSamples());
         maxLevel[i] = juce::Decibels::gainToDecibels(buffer.getMagnitude(i,0,buffer.getNumSamples()));
+        if (maxLevel[i] < smoothedMaxLevel[i].getCurrentValue())
+            smoothedMaxLevel[i].setTargetValue(maxLevel[i]);
+        else
+            smoothedMaxLevel[i].setCurrentAndTargetValue(maxLevel[i]);
+
+        // maxLevel[i] = juce::Decibels::gainToDecibels(buffer.getMagnitude(i,0,buffer.getNumSamples()));
     }
 
     // We start from the last channel because the first channel pair
@@ -210,26 +210,28 @@ juce::AudioProcessorEditor* MonitoringSectionAudioProcessor::createEditor()
 //==============================================================================
 void MonitoringSectionAudioProcessor::getStateInformation (juce::MemoryBlock& destData)
 {
-    // You should use this method to store your parameters in the memory block.
-    // You could do that either as raw data, or use the XML or ValueTree classes
-    // as intermediaries to make it easy to save and load complex data.
+    juce::MemoryOutputStream mos(destData, true);
+    apvts.state.writeToStream(mos);
 }
 
 void MonitoringSectionAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
-    // You should use this method to restore your parameters from this memory block,
-    // whose contents will have been created by the getStateInformation() call.
+    auto tree = juce::ValueTree::readFromData(data,sizeInBytes);
+    if (tree.isValid())
+    {
+        apvts.replaceState(tree);
+    }
 }
 
-
-float MonitoringSectionAudioProcessor::getRmsLevel(const int channel)
-{
-  return rmsLevel[channel].getCurrentValue();
-}
 
 float MonitoringSectionAudioProcessor::getMaxLevel(const int channel)
 {
   return maxLevel[channel];
+}
+
+float MonitoringSectionAudioProcessor::getSmoothedMaxLevel(const int channel)
+{
+  return smoothedMaxLevel[channel].getCurrentValue();
 }
 
 
@@ -251,9 +253,9 @@ juce::AudioProcessorValueTreeState::ParameterLayout MonitoringSectionAudioProces
     {
         layout.add(std::make_unique<juce::AudioParameterBool>(choices[i], choices[i], i==0 ? true : false));
     }
-    layout.add(std::make_unique<juce::AudioParameterBool>("Mute","Mute", true));
-    layout.add(std::make_unique<juce::AudioParameterBool>("Dim","Dim", true));
-    layout.add(std::make_unique<juce::AudioParameterBool>("Mono","Mono", true));
+    layout.add(std::make_unique<juce::AudioParameterBool>("Mute","Mute", false));
+    layout.add(std::make_unique<juce::AudioParameterBool>("Dim","Dim", false));
+    layout.add(std::make_unique<juce::AudioParameterBool>("Mono","Mono", false));
     layout.add(std::make_unique<juce::AudioParameterBool>("Exclusive","Exclusive", true));
 
     return layout;
