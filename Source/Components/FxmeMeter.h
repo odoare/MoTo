@@ -93,16 +93,22 @@ public:
 
     const auto maxWidth = juce::jmap(maxLevel,minValue, maxValue, 0.0f, w);
     const auto smoothedMaxWidth = juce::jmap(smoothedMaxLevel, minValue, maxValue, 0.0f, w);
+    const auto overBackgroundWidth = juce::jmap(0.f, maxValue, minValue, 0.0f, w);
 
     // auto dw = -w+newWidth;
     auto x = bounds.getTopLeft().getX();
     auto maxBounds = bounds;
     auto smoothedMaxBounds = bounds;
+    auto overBackgroundBounds = bounds;
 
     g.setColour(backgroundColour);
-    g.setColour(juce::Colours::black);
+    g.setColour(juce::Colours::black.brighter(0.2f));
     g.fillRect(bounds);
 
+    g.setColour(overColour.darker(1.5f));
+    overBackgroundBounds.setLeft(x+w-overBackgroundWidth);
+    g.fillRect(overBackgroundBounds);
+    
     if (smoothedMaxLevel>=1.f)
       g.setColour(overColour);
     else
@@ -114,6 +120,9 @@ public:
     g.setColour(maxColour);
     maxBounds.setRight(x+maxWidth);
     g.fillRect(maxBounds);
+
+    g.setColour(juce::Colours::darkgrey);
+    g.drawRect(bounds);
   }
 
   void timerCallback() override

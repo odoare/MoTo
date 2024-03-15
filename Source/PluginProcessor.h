@@ -12,7 +12,7 @@
 
 #include <iostream>
 
-#define CHOICES {"A", "B", "C", "D"}
+#define CHOICES {"A", "B", "C", "D", "E", "F", "G"}
 #define NUM_STEREO_OUT 4
 #define NUM_METER_CHANNELS 2
 
