@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="W3ZfTb" name="MonitoringSection" projectType="audioplug"
-              useAppConfig="0" addUsingNamespaceToJuceHeader="0" displaySplashScreen="1"
-              jucerFormatVersion="1" pluginFormats="buildVST,buildVST3" companyName="FX Mechanics"
+<JUCERPROJECT id="W3ZfTb" name="MoTo" projectType="audioplug" useAppConfig="0"
+              addUsingNamespaceToJuceHeader="0" displaySplashScreen="1" jucerFormatVersion="1"
+              pluginFormats="buildVST,buildVST3" companyName="FX Mechanics"
               companyWebsite="www.fx-mechanics.com" pluginManufacturerCode="FXME"
-              pluginCode="MOSE" pluginVST3Category="Fx,Tools">
-  <MAINGROUP id="QRgX1r" name="MonitoringSection">
+              pluginCode="MOTO" pluginVST3Category="Fx,Tools" version="0.0.1"
+              pluginName="MoTo" pluginDesc="Monitoring Tool (put this in your monitoring section effect to manage multiple output devices)">
+  <MAINGROUP id="QRgX1r" name="MoTo">
     <GROUP id="{FE0033EE-A410-5806-E696-878A29A75DD5}" name="Assets">
       <FILE id="Gtx5Xa" name="logo686.png" compile="0" resource="1" file="Source/Assets/logo686.png"/>
     </GROUP>
