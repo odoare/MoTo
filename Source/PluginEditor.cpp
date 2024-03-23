@@ -130,6 +130,8 @@ void MonitoringSectionAudioProcessorEditor::paint (juce::Graphics& g)
 
     auto r = juce::Rectangle<float>(uxb+20.5*ux,uyb+6.25*uy,4*ux,4*ux*227/269);
     g.drawImage(logo, r);
+    g.setColour(juce::Colours::white);
+    g.drawText("MoTo",juce::Rectangle<float>(uxb+20.5*ux,uyb+5.25*uy,4*ux,uy),juce::Justification::centred);
    
 }
 
