@@ -16,11 +16,11 @@
 //==============================================================================
 /**
 */
-class MonitoringSectionAudioProcessorEditor  : public juce::AudioProcessorEditor
+class MoToAudioProcessorEditor  : public juce::AudioProcessorEditor
 {
 public:
-    MonitoringSectionAudioProcessorEditor (MonitoringSectionAudioProcessor&);
-    ~MonitoringSectionAudioProcessorEditor() override;
+    MoToAudioProcessorEditor (MoToAudioProcessor&);
+    ~MoToAudioProcessorEditor() override;
 
     //==============================================================================
     void paint (juce::Graphics&) override;
@@ -29,7 +29,7 @@ public:
 private:
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
-    MonitoringSectionAudioProcessor& audioProcessor;
+    MoToAudioProcessor& audioProcessor;
 
     void addController(juce::Slider&, juce::Slider::SliderStyle, juce::Colour, juce::Colour);
     void addAndConnectLabel(juce::Slider&, juce::Label&);
@@ -76,5 +76,5 @@ private:
 
     juce::Image logo;
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MonitoringSectionAudioProcessorEditor)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MoToAudioProcessorEditor)
 };

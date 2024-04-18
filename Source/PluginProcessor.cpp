@@ -10,7 +10,7 @@
 #include "PluginEditor.h"
 
 //==============================================================================
-MonitoringSectionAudioProcessor::MonitoringSectionAudioProcessor()
+MoToAudioProcessor::MoToAudioProcessor()
 #ifndef JucePlugin_PreferredChannelConfigurations
      : AudioProcessor (BusesProperties()
                      #if ! JucePlugin_IsMidiEffect
@@ -25,18 +25,18 @@ MonitoringSectionAudioProcessor::MonitoringSectionAudioProcessor()
     choices.addArray(CHOICES);
 }
 
-MonitoringSectionAudioProcessor::~MonitoringSectionAudioProcessor()
+MoToAudioProcessor::~MoToAudioProcessor()
 {
     
 }
 
 //==============================================================================
-const juce::String MonitoringSectionAudioProcessor::getName() const
+const juce::String MoToAudioProcessor::getName() const
 {
     return JucePlugin_Name;
 }
 
-bool MonitoringSectionAudioProcessor::acceptsMidi() const
+bool MoToAudioProcessor::acceptsMidi() const
 {
    #if JucePlugin_WantsMidiInput
     return true;
@@ -45,7 +45,7 @@ bool MonitoringSectionAudioProcessor::acceptsMidi() const
    #endif
 }
 
-bool MonitoringSectionAudioProcessor::producesMidi() const
+bool MoToAudioProcessor::producesMidi() const
 {
    #if JucePlugin_ProducesMidiOutput
     return true;
@@ -54,7 +54,7 @@ bool MonitoringSectionAudioProcessor::producesMidi() const
    #endif
 }
 
-bool MonitoringSectionAudioProcessor::isMidiEffect() const
+bool MoToAudioProcessor::isMidiEffect() const
 {
    #if JucePlugin_IsMidiEffect
     return true;
@@ -63,37 +63,37 @@ bool MonitoringSectionAudioProcessor::isMidiEffect() const
    #endif
 }
 
-double MonitoringSectionAudioProcessor::getTailLengthSeconds() const
+double MoToAudioProcessor::getTailLengthSeconds() const
 {
     return 0.0;
 }
 
-int MonitoringSectionAudioProcessor::getNumPrograms()
+int MoToAudioProcessor::getNumPrograms()
 {
     return 1;   // NB: some hosts don't cope very well if you tell them there are 0 programs,
                 // so this should be at least 1, even if you're not really implementing programs.
 }
 
-int MonitoringSectionAudioProcessor::getCurrentProgram()
+int MoToAudioProcessor::getCurrentProgram()
 {
     return 0;
 }
 
-void MonitoringSectionAudioProcessor::setCurrentProgram (int index)
+void MoToAudioProcessor::setCurrentProgram (int index)
 {
 }
 
-const juce::String MonitoringSectionAudioProcessor::getProgramName (int index)
+const juce::String MoToAudioProcessor::getProgramName (int index)
 {
     return {};
 }
 
-void MonitoringSectionAudioProcessor::changeProgramName (int index, const juce::String& newName)
+void MoToAudioProcessor::changeProgramName (int index, const juce::String& newName)
 {
 }
 
 //==============================================================================
-void MonitoringSectionAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
+void MoToAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
     for (int i=0;i<2;i++)
     {
@@ -102,14 +102,14 @@ void MonitoringSectionAudioProcessor::prepareToPlay (double sampleRate, int samp
     }
 }
 
-void MonitoringSectionAudioProcessor::releaseResources()
+void MoToAudioProcessor::releaseResources()
 {
     // When playback stops, you can use this as an opportunity to free up any
     // spare memory, etc.
 }
 
 #ifndef JucePlugin_PreferredChannelConfigurations
-bool MonitoringSectionAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts) const
+bool MoToAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts) const
 {
   #if JucePlugin_IsMidiEffect
     juce::ignoreUnused (layouts);
@@ -134,7 +134,7 @@ bool MonitoringSectionAudioProcessor::isBusesLayoutSupported (const BusesLayout&
 }
 #endif
 
-void MonitoringSectionAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
+void MoToAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
 {
     juce::ScopedNoDenormals noDenormals;
     auto totalNumInputChannels  = getTotalNumInputChannels();
@@ -196,25 +196,25 @@ void MonitoringSectionAudioProcessor::processBlock (juce::AudioBuffer<float>& bu
 }
 
 //==============================================================================
-bool MonitoringSectionAudioProcessor::hasEditor() const
+bool MoToAudioProcessor::hasEditor() const
 {
     return true; // (change this to false if you choose to not supply an editor)
 }
 
-juce::AudioProcessorEditor* MonitoringSectionAudioProcessor::createEditor()
+juce::AudioProcessorEditor* MoToAudioProcessor::createEditor()
 {
     //return new juce::GenericAudioProcessorEditor(*this);
-    return new MonitoringSectionAudioProcessorEditor (*this);
+    return new MoToAudioProcessorEditor (*this);
 }
 
 //==============================================================================
-void MonitoringSectionAudioProcessor::getStateInformation (juce::MemoryBlock& destData)
+void MoToAudioProcessor::getStateInformation (juce::MemoryBlock& destData)
 {
     juce::MemoryOutputStream mos(destData, true);
     apvts.state.writeToStream(mos);
 }
 
-void MonitoringSectionAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
+void MoToAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
     auto tree = juce::ValueTree::readFromData(data,sizeInBytes);
     if (tree.isValid())
@@ -224,12 +224,12 @@ void MonitoringSectionAudioProcessor::setStateInformation (const void* data, int
 }
 
 
-float MonitoringSectionAudioProcessor::getMaxLevel(const int channel)
+float MoToAudioProcessor::getMaxLevel(const int channel)
 {
   return maxLevel[channel];
 }
 
-float MonitoringSectionAudioProcessor::getSmoothedMaxLevel(const int channel)
+float MoToAudioProcessor::getSmoothedMaxLevel(const int channel)
 {
   return smoothedMaxLevel[channel].getCurrentValue();
 }
@@ -239,10 +239,10 @@ float MonitoringSectionAudioProcessor::getSmoothedMaxLevel(const int channel)
 // This creates new instances of the plugin..
 juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
-    return new MonitoringSectionAudioProcessor();
+    return new MoToAudioProcessor();
 }
 
-juce::AudioProcessorValueTreeState::ParameterLayout MonitoringSectionAudioProcessor::createParameters()
+juce::AudioProcessorValueTreeState::ParameterLayout MoToAudioProcessor::createParameters()
 {
     juce::AudioProcessorValueTreeState::ParameterLayout layout;
     layout.add(std::make_unique<juce::AudioParameterFloat>("Level","Level",juce::NormalisableRange<float>(-60.0f,6.f,0.1f,1.f),0.f));

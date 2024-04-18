@@ -19,12 +19,12 @@
 //==============================================================================
 /**
 */
-class MonitoringSectionAudioProcessor  : public juce::AudioProcessor
+class MoToAudioProcessor  : public juce::AudioProcessor
 {
 public:
     //==============================================================================
-    MonitoringSectionAudioProcessor();
-    ~MonitoringSectionAudioProcessor() override;
+    MoToAudioProcessor();
+    ~MoToAudioProcessor() override;
 
     //==============================================================================
     void prepareToPlay (double sampleRate, int samplesPerBlock) override;
@@ -72,5 +72,5 @@ private:
     float maxLevel[NUM_METER_CHANNELS];
     float maxDecay{2.f};
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MonitoringSectionAudioProcessor)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MoToAudioProcessor)
 };

@@ -10,7 +10,7 @@
 #include "PluginEditor.h"
 
 //==============================================================================
-MonitoringSectionAudioProcessorEditor::MonitoringSectionAudioProcessorEditor (MonitoringSectionAudioProcessor& p)
+MoToAudioProcessorEditor::MoToAudioProcessorEditor (MoToAudioProcessor& p)
     : AudioProcessorEditor (&p), audioProcessor (p)
 {
 
@@ -99,7 +99,7 @@ MonitoringSectionAudioProcessorEditor::MonitoringSectionAudioProcessorEditor (Mo
     setSize (360, 150);
 }
 
-MonitoringSectionAudioProcessorEditor::~MonitoringSectionAudioProcessorEditor()
+MoToAudioProcessorEditor::~MoToAudioProcessorEditor()
 {
 }
 
@@ -111,7 +111,7 @@ MonitoringSectionAudioProcessorEditor::~MonitoringSectionAudioProcessorEditor()
 #define RED reduced(DELTAX*dux,DELTAY*duy)
 
 //==============================================================================
-void MonitoringSectionAudioProcessorEditor::paint (juce::Graphics& g)
+void MoToAudioProcessorEditor::paint (juce::Graphics& g)
 {
     float uxb = BORDER*getWidth();
     float uyb = BORDER*getHeight();
@@ -135,7 +135,7 @@ void MonitoringSectionAudioProcessorEditor::paint (juce::Graphics& g)
    
 }
 
-void MonitoringSectionAudioProcessorEditor::resized()
+void MoToAudioProcessorEditor::resized()
 {
   float uxb = BORDER*getWidth();
   float uyb =BORDER*getHeight();
@@ -163,7 +163,7 @@ void MonitoringSectionAudioProcessorEditor::resized()
   meterR.setBounds(uxb,uyb+2.25*duy,5*dux,0.25*duy);
 }
 
-void MonitoringSectionAudioProcessorEditor::addController(juce::Slider& slider,
+void MoToAudioProcessorEditor::addController(juce::Slider& slider,
                                                     juce::Slider::SliderStyle style,
                                                     juce::Colour fillCol,
                                                     juce::Colour outlineCol)
@@ -179,7 +179,7 @@ void MonitoringSectionAudioProcessorEditor::addController(juce::Slider& slider,
   addAndMakeVisible(slider);
 }
 
-void MonitoringSectionAudioProcessorEditor::addAndConnectLabel(juce::Slider& slider,
+void MoToAudioProcessorEditor::addAndConnectLabel(juce::Slider& slider,
                                                 juce::Label& label)
 {
   addAndMakeVisible(label);
