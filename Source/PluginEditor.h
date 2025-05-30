@@ -10,8 +10,9 @@
 
 #include <JuceHeader.h>
 #include "PluginProcessor.h"
-#include "Components/FxmeLookAndFeel.h"
-#include "Components/FxmeMeter.h"
+#include "Components/knobsComponent.h"
+#include "Components/buttonsComponent.h"
+#include "Components/FxmeLogo.h"
 
 //==============================================================================
 /**
@@ -34,47 +35,28 @@ private:
     void addController(juce::Slider&, juce::Slider::SliderStyle, juce::Colour, juce::Colour);
     void addAndConnectLabel(juce::Slider&, juce::Label&);
 
-    juce::Slider levelSlider;
-    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> levelSliderAttachment;
-    juce::Label levelLabel{"levelLabel", "Level"};
+    fxme::FxmeKnob levelSlider{ audioProcessor.apvts, "Level", juce::Colours::cyan};
+    fxme::FxmeButton muteButton{audioProcessor.apvts, "Mute", juce::Colours::red};
+    fxme::FxmeButton dimButton{audioProcessor.apvts, "Dim", juce::Colours::yellow};
+    fxme::FxmeButton monoButton{audioProcessor.apvts, "Mono", juce::Colours::green};
 
-    juce::ToggleButton muteButton;
-    std::unique_ptr<juce::AudioProcessorValueTreeState::ButtonAttachment> muteButtonAttachment;
-    juce::Label muteLabel{"muteLabel", "Mute"};
 
-    juce::ToggleButton dimButton;
-    std::unique_ptr<juce::AudioProcessorValueTreeState::ButtonAttachment> dimButtonAttachment;
-    juce::Label dimLabel{"dimLabel", "Dim"};
+    fxme::FxmeLookAndFeel buttonLookAndFeel;
+    fxme::FxmeLookAndFeel knobLookAndFeel;
 
-    juce::ToggleButton monoButton;
-    std::unique_ptr<juce::AudioProcessorValueTreeState::ButtonAttachment> monoButtonAttachment;
-    juce::Label monoLabel{"monoLabel", "Mono"};
-
-    juce::ToggleButton channelButton[NUM_STEREO_OUT];
-    std::unique_ptr<juce::AudioProcessorValueTreeState::ButtonAttachment> channelButtonAttachment[NUM_STEREO_OUT];
-    juce::Label channelLabel[NUM_STEREO_OUT];
-    int channelIndex[NUM_STEREO_OUT];
-
-    juce::ToggleButton exclusiveButton;
-    std::unique_ptr<juce::AudioProcessorValueTreeState::ButtonAttachment> exclusiveButtonAttachment;
-    juce::Label exclusiveLabel{"exclusiveLabel","Excl"};
-    
-    FxmeButtonLookAndFeel buttonLookAndFeel;
-    FxmeKnobLookAndFeel knobLookAndFeel;
-
-    // VerticalMeter   verticalMeterLmax{[&]() { return audioProcessor.getMaxLevel(0); }},
-    //                 verticalMeterRmax{[&]() { return audioProcessor.getMaxLevel(1); }},
-    //                 verticalMeterL{[&]() { return audioProcessor.getRmsLevel(0); }},
-    //                 verticalMeterR{[&]() { return audioProcessor.getRmsLevel(1); }};
-
-    HorizontalMultiMeter meterL{[&]() { return audioProcessor.getMaxLevel(0); },
+    fxme::HorizontalVuMeter meterL{[&]() { return audioProcessor.getMaxLevel(0); },
                                 [&]() { return audioProcessor.getSmoothedMaxLevel(0); }},
                          meterR{[&]() { return audioProcessor.getMaxLevel(1); },
                                 [&]() { return audioProcessor.getSmoothedMaxLevel(1); }};
 
     int lastChangedChannelIndex;
 
-    juce::Image logo;
+    // juce::Image logo;
+    FxmeLogo logo;
+
+    juce::TabbedComponent tabs{juce::TabbedButtonBar::TabsAtTop};
+    ButtonsComponent buttonsComponent{audioProcessor.apvts, audioProcessor.choices, "Exclusive", buttonLookAndFeel};
+    KnobsComponent knobsComponent{audioProcessor.apvts, audioProcessor.choicesL, knobLookAndFeel};
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MoToAudioProcessorEditor)
 };

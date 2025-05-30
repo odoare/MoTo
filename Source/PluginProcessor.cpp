@@ -22,7 +22,13 @@ MoToAudioProcessor::MoToAudioProcessor()
                        )
 #endif
 {
-    choices.addArray(CHOICES);
+    juce::StringArray ch = juce::StringArray(CHOICES);
+    juce::StringArray chl = juce::StringArray(CHOICESL);
+    for (int i=0; i<NUM_STEREO_OUT; ++i)
+    {
+        choices.add(ch[i]);
+        choicesL.add(chl[i]);
+    }
 }
 
 MoToAudioProcessor::~MoToAudioProcessor()
@@ -111,26 +117,12 @@ void MoToAudioProcessor::releaseResources()
 #ifndef JucePlugin_PreferredChannelConfigurations
 bool MoToAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts) const
 {
-  #if JucePlugin_IsMidiEffect
-    juce::ignoreUnused (layouts);
-    return true;
-  #else
     // This is the place where you check if the layout is supported.
-    // In this template code we only support mono or stereo.
-    // Some plugin hosts, such as certain GarageBand versions, will only
-    // load plugins that support stereo bus layouts.
-    if (layouts.getMainOutputChannelSet() != juce::AudioChannelSet::mono()
-     && layouts.getMainOutputChannelSet() != juce::AudioChannelSet::stereo())
+    if (layouts.getMainOutputChannelSet() != juce::AudioChannelSet::discreteChannels(2*NUM_STEREO_OUT))
         return false;
-
-    // This checks if the input layout matches the output layout
-   #if ! JucePlugin_IsSynth
-    if (layouts.getMainOutputChannelSet() != layouts.getMainInputChannelSet())
+    if (layouts.getMainInputChannelSet() != juce::AudioChannelSet::stereo())
         return false;
-   #endif
-
     return true;
-  #endif
 }
 #endif
 
@@ -147,7 +139,7 @@ void MoToAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::M
     auto mono = apvts.getRawParameterValue("Mono")->load();
 
     // We clear all the output channels from 2 to totalNumInputChannels-1
-    for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
+    for (int i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
         buffer.clear (i, 0, buffer.getNumSamples());
 
     // We apply gain on the first two channels
@@ -173,7 +165,6 @@ void MoToAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::M
         else
             smoothedMaxLevel[i].setCurrentAndTargetValue(maxLevel[i]);
 
-        // maxLevel[i] = juce::Decibels::gainToDecibels(buffer.getMagnitude(i,0,buffer.getNumSamples()));
     }
 
     // We start from the last channel because the first channel pair
@@ -182,6 +173,7 @@ void MoToAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::M
     for (int chanpair = NUM_STEREO_OUT-1; chanpair > -1; --chanpair)
     {
         float gain = apvts.getRawParameterValue(choices[chanpair])->load() ? 1.f : 0.f ;
+        gain *= juce::Decibels::decibelsToGain(apvts.getRawParameterValue(choicesL[chanpair])->load()) ;
         if (chanpair > 0)
         {
             buffer.addFrom(2*chanpair,0,buffer,0,0,buffer.getNumSamples(),gain);
@@ -247,11 +239,14 @@ juce::AudioProcessorValueTreeState::ParameterLayout MoToAudioProcessor::createPa
     juce::AudioProcessorValueTreeState::ParameterLayout layout;
     layout.add(std::make_unique<juce::AudioParameterFloat>("Level","Level",juce::NormalisableRange<float>(-60.0f,6.f,0.1f,1.f),0.f));
     
-    juce::StringArray choices;
+    juce::StringArray choices, choicesL;
     choices.addArray(CHOICES);
+    choicesL.addArray(CHOICESL);
+    
     for (int i=0; i<NUM_STEREO_OUT; ++i)
     {
-        layout.add(std::make_unique<juce::AudioParameterBool>(choices[i], choices[i], i==0 ? true : false));
+        layout.add(std::make_unique<juce::AudioParameterBool>(choices[i],choices[i],false));
+        layout.add(std::make_unique<juce::AudioParameterFloat>(choicesL[i],choicesL[i],juce::NormalisableRange<float>(-60.0f,6.f,0.1f,1.f),0.f));
     }
     layout.add(std::make_unique<juce::AudioParameterBool>("Mute","Mute", false));
     layout.add(std::make_unique<juce::AudioParameterBool>("Dim","Dim", false));

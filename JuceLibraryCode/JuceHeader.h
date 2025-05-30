@@ -13,6 +13,7 @@
 #pragma once
 
 
+#include <FxmeJuceTools/FxmeJuceTools.h>
 #include <juce_audio_basics/juce_audio_basics.h>
 #include <juce_audio_devices/juce_audio_devices.h>
 #include <juce_audio_formats/juce_audio_formats.h>
@@ -44,7 +45,7 @@ namespace ProjectInfo
 {
     const char* const  projectName    = "MoTo";
     const char* const  companyName    = "FX Mechanics";
-    const char* const  versionString  = "0.0.1";
-    const int          versionNumber  = 0x1;
+    const char* const  versionString  = "0.0.2";
+    const int          versionNumber  = 0x2;
 }
 #endif

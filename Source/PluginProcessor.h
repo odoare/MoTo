@@ -13,7 +13,8 @@
 #include <iostream>
 
 #define CHOICES {"A", "B", "C", "D", "E", "F", "G"}
-#define NUM_STEREO_OUT 4
+#define CHOICESL {"levelA", "levelB", "levelC", "levelD", "levelE", "levelF", "levelG"}
+#define NUM_STEREO_OUT 5
 #define NUM_METER_CHANNELS 2
 
 //==============================================================================
@@ -65,7 +66,7 @@ public:
     static juce::AudioProcessorValueTreeState::ParameterLayout createParameters();  
     juce::AudioProcessorValueTreeState apvts{*this,nullptr,"Parameters",createParameters()};
 
-    juce::StringArray choices;
+    juce::StringArray choices, choicesL;
 
 private:
     juce::LinearSmoothedValue<float> smoothedMaxLevel[NUM_METER_CHANNELS]; 

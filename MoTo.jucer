@@ -2,19 +2,30 @@
 
 <JUCERPROJECT id="W3ZfTb" name="MoTo" projectType="audioplug" useAppConfig="0"
               addUsingNamespaceToJuceHeader="0" displaySplashScreen="1" jucerFormatVersion="1"
-              pluginFormats="buildVST,buildVST3" companyName="FX Mechanics"
+              pluginFormats="buildLV2,buildVST,buildVST3" companyName="FX Mechanics"
               companyWebsite="www.fx-mechanics.com" pluginManufacturerCode="FXME"
-              pluginCode="MOTO" pluginVST3Category="Fx,Tools" version="0.0.1"
-              pluginName="MoTo" pluginDesc="Monitoring Tool (put this in your monitoring section effect to manage multiple output devices)">
+              pluginCode="MOTO" pluginVST3Category="Fx,Tools" version="0.0.2"
+              pluginName="MoTo" pluginDesc="Monitoring Tool (put this in your monitoring section effect to manage multiple output devices)"
+              lv2Uri="http://fx-mechanics.com/lv2/moto">
   <MAINGROUP id="QRgX1r" name="MoTo">
     <GROUP id="{FE0033EE-A410-5806-E696-878A29A75DD5}" name="Assets">
       <FILE id="Gtx5Xa" name="logo686.png" compile="0" resource="1" file="Source/Assets/logo686.png"/>
     </GROUP>
     <GROUP id="{D55946A7-C5F1-EBDB-57D8-976F8D4B8B3F}" name="Source">
       <GROUP id="{89404A13-21F7-D165-BFBC-14A08E8DA7B2}" name="Components">
+        <FILE id="OqO0ud" name="buttonsComponent.cpp" compile="1" resource="0"
+              file="Source/Components/buttonsComponent.cpp"/>
+        <FILE id="DUvLCS" name="buttonsComponent.h" compile="0" resource="0"
+              file="Source/Components/buttonsComponent.h"/>
+        <FILE id="ne14mF" name="FxmeLogo.cpp" compile="1" resource="0" file="Source/Components/FxmeLogo.cpp"/>
+        <FILE id="GWCz7l" name="FxmeLogo.h" compile="0" resource="0" file="Source/Components/FxmeLogo.h"/>
         <FILE id="mLQ3cU" name="FxmeLookAndFeel.h" compile="0" resource="0"
               file="Source/Components/FxmeLookAndFeel.h"/>
         <FILE id="hELWtE" name="FxmeMeter.h" compile="0" resource="0" file="Source/Components/FxmeMeter.h"/>
+        <FILE id="csyqLx" name="knobsComponent.cpp" compile="1" resource="0"
+              file="Source/Components/knobsComponent.cpp"/>
+        <FILE id="t5wNJd" name="knobsComponent.h" compile="0" resource="0"
+              file="Source/Components/knobsComponent.h"/>
       </GROUP>
       <FILE id="Gw7Qyw" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>
@@ -26,6 +37,7 @@
     </GROUP>
   </MAINGROUP>
   <MODULES>
+    <MODULE id="fxme_juce_tools" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
@@ -61,6 +73,7 @@
         <MODULEPATH id="juce_graphics" path="../../JUCE/JUCE/modules"/>
         <MODULEPATH id="juce_gui_basics" path="../../JUCE/JUCE/modules"/>
         <MODULEPATH id="juce_gui_extra" path="../../JUCE/JUCE/modules"/>
+        <MODULEPATH id="fxme_juce_tools" path="../JUCE/usermodules"/>
       </MODULEPATHS>
     </VS2022>
     <XCODE_MAC targetFolder="Builds/MacOSX">
@@ -81,6 +94,7 @@
         <MODULEPATH id="juce_graphics" path="../../JUCE/JUCE/modules"/>
         <MODULEPATH id="juce_gui_basics" path="../../JUCE/JUCE/modules"/>
         <MODULEPATH id="juce_gui_extra" path="../../JUCE/JUCE/modules"/>
+        <MODULEPATH id="fxme_juce_tools" path="../JUCE/usermodules"/>
       </MODULEPATHS>
     </XCODE_MAC>
     <LINUX_MAKE targetFolder="Builds/LinuxMakefile">
@@ -101,6 +115,7 @@
         <MODULEPATH id="juce_graphics" path="../../juce"/>
         <MODULEPATH id="juce_gui_basics" path="../../juce"/>
         <MODULEPATH id="juce_gui_extra" path="../../juce"/>
+        <MODULEPATH id="fxme_juce_tools" path="../JUCE/usermodules"/>
       </MODULEPATHS>
     </LINUX_MAKE>
   </EXPORTFORMATS>
