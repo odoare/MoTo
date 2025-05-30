@@ -79,14 +79,14 @@ void ButtonsComponent::prepare()
     if (apvtsPtr->getRawParameterValue(exclusiveParamName)->load())
       {
         bool state = buttons[i]->getToggleState();
-        for (size_t j = 0; j < numChannels; ++j)
+        for (int j = 0; j < numChannels; ++j)
         {
             if (j != i && state) buttons[j]->setToggleState(false, juce::sendNotification);
         }
       }
     };
 
-  for (size_t i = 0; i < numChannels; ++i)
+  for (int i = 0; i < numChannels; ++i)
   {
     buttons[i]->onClick = [selectFunc, i]()
     {
