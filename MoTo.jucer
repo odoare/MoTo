@@ -19,8 +19,6 @@
               file="Source/Components/buttonsComponent.h"/>
         <FILE id="ne14mF" name="FxmeLogo.cpp" compile="1" resource="0" file="Source/Components/FxmeLogo.cpp"/>
         <FILE id="GWCz7l" name="FxmeLogo.h" compile="0" resource="0" file="Source/Components/FxmeLogo.h"/>
-        <FILE id="mLQ3cU" name="FxmeLookAndFeel.h" compile="0" resource="0"
-              file="Source/Components/FxmeLookAndFeel.h"/>
         <FILE id="hELWtE" name="FxmeMeter.h" compile="0" resource="0" file="Source/Components/FxmeMeter.h"/>
         <FILE id="csyqLx" name="knobsComponent.cpp" compile="1" resource="0"
               file="Source/Components/knobsComponent.cpp"/>
