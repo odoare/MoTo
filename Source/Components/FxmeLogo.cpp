@@ -36,10 +36,15 @@ void FxmeLogo::paint (juce::Graphics& g)
     if (logo.isValid())
     {
         auto bounds = getLocalBounds().toFloat();
+        auto size = juce::jmin(bounds.getWidth(), bounds.getHeight() * 0.7f);
+        if (size < bounds.getWidth())
+            bounds.setX(bounds.getX() + (bounds.getWidth() - size) / 2.0f);
+        if (size < bounds.getHeight() * 0.7f)
+            bounds.setY(bounds.getY() + (bounds.getHeight() * 0.7f - size) / 2.0f);
         auto logoBounds = juce::Rectangle<float>(bounds.getX(),
                                                  bounds.getY(),
-                                                 bounds.getWidth(),
-                                                 bounds.getHeight() * 0.7);
+                                                 size,
+                                                 size);
         g.drawImage(logo, logoBounds);
     }
     g.setColour(juce::Colours::white);
@@ -48,7 +53,7 @@ void FxmeLogo::paint (juce::Graphics& g)
                                              bounds.getY() + bounds.getHeight() * 0.7,
                                              bounds.getWidth(),
                                              bounds.getHeight() * 0.3);
-    g.drawText("MoTo", logoBounds,
+    g.drawText("MoTo 0.0.2", logoBounds,
                 juce::Justification::centred, true);   // draw some placeholder text
 }
 
