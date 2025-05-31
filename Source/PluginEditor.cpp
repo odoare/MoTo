@@ -1,9 +1,31 @@
 /*
-  ==============================================================================
+  ------------------------------------------------------------------------------
 
-    This file contains the basic framework code for a JUCE plugin editor.
+    PluginEditor.cpp
+    Author:  Olivier Doaré
+    github.com/odoare
 
-  ==============================================================================
+    (c) 2023-2025 Olivier Doaré
+
+    Licenced under the GNU Lesser General Public License (LGPL) Version 3.0
+    SPDX-License-Identifier: LGPL-3.0-or-later
+
+  ------------------------------------------------------------------------------
+    This file is part of the MoTo plugin.
+
+    MoTo is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    MoTo is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with MoTo. If not, see <https://www.gnu.org/licenses/>.
+  ------------------------------------------------------------------------------
 */
 
 #include "PluginProcessor.h"
@@ -13,8 +35,6 @@
 MoToAudioProcessorEditor::MoToAudioProcessorEditor (MoToAudioProcessor& p)
     : AudioProcessorEditor (&p), audioProcessor (p)
 {
-
-  // logo = juce::ImageCache::getFromMemory(BinaryData::logo686_png, BinaryData::logo686_pngSize);
 
   addAndMakeVisible(levelSlider.slider);
   levelSlider.slider.setLookAndFeel(&knobLookAndFeel);
@@ -38,8 +58,6 @@ MoToAudioProcessorEditor::MoToAudioProcessorEditor (MoToAudioProcessor& p)
 
   addAndMakeVisible(logo);
 
-  // Make sure that before the constructor has finished, you've set the
-  // editor's size to whatever you need it to be.
   setResizable(true, true);
   setSize (360, 180);
 }
@@ -48,20 +66,9 @@ MoToAudioProcessorEditor::~MoToAudioProcessorEditor()
 {
 }
 
-#define NX 24
-#define NY 10
-#define DELTAX 0.2f
-#define DELTAY 0.2f
-#define BORDER 0.05f
-#define RED reduced(DELTAX*dux,DELTAY*duy)
-
 //==============================================================================
 void MoToAudioProcessorEditor::paint (juce::Graphics& g)
 {
-    float uxb = BORDER*getWidth();
-    float uyb = BORDER*getHeight();
-    auto ux = (1-2*BORDER)*getWidth()/NX;
-    auto uy = (1-2*BORDER)*getHeight()/NY;
 
     auto diagonale = (getLocalBounds().getTopLeft() - getLocalBounds().getBottomRight()).toFloat();
     auto length = diagonale.getDistanceFromOrigin();
@@ -72,11 +79,6 @@ void MoToAudioProcessorEditor::paint (juce::Graphics& g)
                            bluegreengrey, perpendicular * -height, false);
     g.setGradientFill(grad);
     g.fillAll();
-
-    // auto r = juce::Rectangle<float>(uxb+20.5*ux,uyb+7.5*uy,4*ux,4*ux*227/269);
-    // g.drawImage(logo, r);
-    // g.setColour(juce::Colours::white);
-    // g.drawText("MoTo",juce::Rectangle<float>(uxb+20.5*ux,uyb+6.5*uy,4*ux,uy),juce::Justification::centred);
    
 }
 
@@ -101,8 +103,8 @@ void MoToAudioProcessorEditor::resized()
   fb3.items.add(juce::FlexItem(meterL).withFlex(1.0f));
   fb3.items.add(juce::FlexItem(meterR).withFlex(1.0f));
   fb4.items.add(juce::FlexItem(fb3).withFlex(1.0f));
-  fb4.items.add(juce::FlexItem(logo).withFlex(0.2f).withMargin(juce::FlexItem::Margin(5.0f, 10.0f, 5.0f, 10.0f)).withAlignSelf(juce::FlexItem::AlignSelf::stretch));
-  fbMain.items.add(juce::FlexItem(fb1).withFlex(1.1f).withMargin(juce::FlexItem::Margin(0.0f, 0.0f, 0.0f, 0.0f)));
+  fb4.items.add(juce::FlexItem(logo).withFlex(0.2f).withMargin(juce::FlexItem::Margin(5.f, 5.f, 5.f, 5.f)).withAlignSelf(juce::FlexItem::AlignSelf::stretch));
+  fbMain.items.add(juce::FlexItem(fb1).withFlex(1.1f));
   fbMain.items.add(juce::FlexItem(fb4).withFlex(1.f));
   fbMain.performLayout(getLocalBounds().toFloat());
 }

@@ -12,7 +12,8 @@
 #include "FxmeLogo.h"
 
 //==============================================================================
-FxmeLogo::FxmeLogo()
+FxmeLogo::FxmeLogo(juce::String title)
+    : titleText(title)
 {
   logo = juce::ImageCache::getFromMemory(BinaryData::logo686_png, BinaryData::logo686_pngSize);
     // In your constructor, you should add any child components, and
@@ -26,12 +27,6 @@ FxmeLogo::~FxmeLogo()
 
 void FxmeLogo::paint (juce::Graphics& g)
 {
-    /* This demo code just fills the component's background and
-       draws some placeholder text to get you started.
-
-       You should replace everything in this method with your own
-       drawing code..
-    */
 
     if (logo.isValid())
     {
@@ -47,13 +42,14 @@ void FxmeLogo::paint (juce::Graphics& g)
                                                  size);
         g.drawImage(logo, logoBounds);
     }
+
     g.setColour(juce::Colours::white);
     auto bounds = getLocalBounds().toFloat();
     auto logoBounds = juce::Rectangle<float>(bounds.getX(),
                                              bounds.getY() + bounds.getHeight() * 0.7,
                                              bounds.getWidth(),
                                              bounds.getHeight() * 0.3);
-    g.drawText("MoTo 0.0.2", logoBounds,
+    g.drawText(titleText, logoBounds,
                 juce::Justification::centred, true);   // draw some placeholder text
 }
 

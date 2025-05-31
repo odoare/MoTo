@@ -1,11 +1,20 @@
 /*
-  ==============================================================================
+  ------------------------------------------------------------------------------
 
     buttonsComponent.cpp
-    Created: 26 May 2025 6:33:40pm
-    Author:  doare
+    Author:  Olivier Doaré    
+    github.com/odoare
 
-  ==============================================================================
+    (c) 2023-2025 Olivier Doaré
+
+    Licenced under the GNU Lesser General Public License (LGPL) Version 3.0
+    SPDX-License-Identifier: LGPL-3.0-or-later
+
+  ------------------------------------------------------------------------------
+    This file implements a component that contains a set of toggle buttons
+    for selecting channels, with an additional exclusive toggle button.
+    The buttons are linked to parameters in an AudioProcessorValueTreeState.
+  ------------------------------------------------------------------------------
 */
 
 #include <JuceHeader.h>
@@ -39,13 +48,12 @@ ButtonsComponent::ButtonsComponent(
     }
 
     exclusiveButton.setClickingTogglesState(true);
-    exclusiveButton.setButtonText("Excl.");
+    exclusiveButton.setButtonText("x");
     exclusiveButton.setColour(juce::ToggleButton::tickColourId, juce::Colours::cyan);
     // exclusiveButton.setLookAndFeel(&buttonLookAndFeel);
     addAndMakeVisible(exclusiveButton);
     exclusiveButtonAttachment = std::make_unique<juce::AudioProcessorValueTreeState::ButtonAttachment>(
         *apvts, exclusiveParam, exclusiveButton);
-
 }
 
 ButtonsComponent::~ButtonsComponent()
@@ -66,9 +74,9 @@ void ButtonsComponent::resized()
   fb.flexDirection = juce::FlexBox::Direction::row;
   for (size_t i = 0; i < numChannels; ++i)
   {
-      fb.items.add(juce::FlexItem(*buttons[i]).withFlex(1.0f));
+      fb.items.add(juce::FlexItem(*buttons[i]).withFlex(1.f));
   }
-  fb.items.add(juce::FlexItem(exclusiveButton).withFlex(1.5f));
+  fb.items.add(juce::FlexItem(exclusiveButton).withFlex(1.f));
   fb.performLayout(getLocalBounds().toFloat());
 }
 

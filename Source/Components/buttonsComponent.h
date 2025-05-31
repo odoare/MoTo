@@ -1,12 +1,22 @@
 /*
-  ==============================================================================
+  ------------------------------------------------------------------------------
 
     buttonsComponent.h
-    Created: 26 May 2025 6:33:40pm
-    Author:  doare
+    Author:  Olivier Doaré
+    github.com/odoare
 
-  ==============================================================================
+    (c) 2023-2025 Olivier Doaré
+
+    Licenced under the GNU Lesser General Public License (LGPL) Version 3.0
+    SPDX-License-Identifier: LGPL-3.0-or-later
+
+  ------------------------------------------------------------------------------
+    This file defines a component that contains a set of toggle buttons
+    for selecting channels, with an additional exclusive toggle button.
+    The buttons are linked to parameters in an AudioProcessorValueTreeState.
+  ------------------------------------------------------------------------------
 */
+
 
 #pragma once
 

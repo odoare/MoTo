@@ -1,9 +1,31 @@
 /*
-  ==============================================================================
+  ------------------------------------------------------------------------------
 
-    This file contains the basic framework code for a JUCE plugin processor.
+    PluginProcessor.h
+    Author:  Olivier Doaré
+    github.com/odoare
 
-  ==============================================================================
+    (c) 2023-2025 Olivier Doaré
+
+    Licenced under the GNU Lesser General Public License (LGPL) Version 3.0
+    SPDX-License-Identifier: LGPL-3.0-or-later
+
+  ------------------------------------------------------------------------------
+    This file is part of the MoTo plugin.
+
+    MoTo is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    MoTo is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with MoTo. If not, see <https://www.gnu.org/licenses/>.
+  ------------------------------------------------------------------------------
 */
 
 #pragma once

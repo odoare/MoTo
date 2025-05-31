@@ -2,9 +2,9 @@
 
 <JUCERPROJECT id="W3ZfTb" name="MoTo" projectType="audioplug" useAppConfig="0"
               addUsingNamespaceToJuceHeader="0" displaySplashScreen="1" jucerFormatVersion="1"
-              pluginFormats="buildLV2,buildVST,buildVST3" companyName="FX Mechanics"
+              pluginFormats="buildLV2,buildStandalone,buildVST,buildVST3" companyName="FX Mechanics"
               companyWebsite="www.fx-mechanics.com" pluginManufacturerCode="FXME"
-              pluginCode="MOTO" pluginVST3Category="Fx,Tools" version="0.0.2"
+              pluginCode="MOTO" pluginVST3Category="Fx,Tools" version="0.1"
               pluginName="MoTo" pluginDesc="Monitoring Tool (put this in your monitoring section effect to manage multiple output devices)"
               lv2Uri="http://fx-mechanics.com/lv2/moto">
   <MAINGROUP id="QRgX1r" name="MoTo">
@@ -19,7 +19,6 @@
               file="Source/Components/buttonsComponent.h"/>
         <FILE id="ne14mF" name="FxmeLogo.cpp" compile="1" resource="0" file="Source/Components/FxmeLogo.cpp"/>
         <FILE id="GWCz7l" name="FxmeLogo.h" compile="0" resource="0" file="Source/Components/FxmeLogo.h"/>
-        <FILE id="hELWtE" name="FxmeMeter.h" compile="0" resource="0" file="Source/Components/FxmeMeter.h"/>
         <FILE id="csyqLx" name="knobsComponent.cpp" compile="1" resource="0"
               file="Source/Components/knobsComponent.cpp"/>
         <FILE id="t5wNJd" name="knobsComponent.h" compile="0" resource="0"

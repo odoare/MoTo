@@ -1,12 +1,22 @@
 /*
-  ==============================================================================
+  ------------------------------------------------------------------------------
 
     knobsComponent.cpp
-    Created: 26 May 2025 6:34:14pm
-    Author:  doare
+    Author:  Olivier Doaré    
+    github.com/odoare
 
-  ==============================================================================
+    (c) 2023-2025 Olivier Doaré
+
+    Licenced under the GNU Lesser General Public License (LGPL) Version 3.0
+    SPDX-License-Identifier: LGPL-3.0-or-later
+
+  ------------------------------------------------------------------------------
+    This file implements a component that contains a set of knobs
+    for controlling parameters in an AudioProcessorValueTreeState.
+    The knobs are linked to parameters and can be resized dynamically.
+  ------------------------------------------------------------------------------
 */
+
 
 #include <JuceHeader.h>
 #include "knobsComponent.h"
